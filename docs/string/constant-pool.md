@@ -1,11 +1,16 @@
 ---
+title: 深入理解Java字符串常量池
+shortTitle: 深入理解Java字符串常量池
 category:
   - Java核心
 tag:
-  - Java
+  - 数组&字符串
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，深入理解Java字符串常量池
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java字符串,String,常量池
 ---
-
-# 深入了解Java字符串常量池
 
 “三妹，今天我们来学习一下字符串常量池吧，这是字符串中非常关键的一个知识点。”我话音未落，青岛路小学那边传来了嘹亮的歌声就钻进了我的耳朵，“唱 ~ 山 ~ 歌 ~”
 
@@ -48,7 +53,7 @@ String s = new String("二哥");
 String s1 = new String("二哥");
 ```
 
- 按照我们之前的分析，这两行代码会创建三个对象，字符串常量池中一个，堆上两个。
+按照我们之前的分析，这两行代码会创建三个对象，字符串常量池中一个，堆上两个。
 
 再来看下面这个例子：
 
@@ -65,17 +70,17 @@ String s1 = "三妹";
 
 在 Java 8 之前，字符串常量池在永久代中。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/constant-pool-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/constant-pool-01.png)
 
 Java 8 之后，移除了永久代，字符串常量池就移到了堆中。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/constant-pool-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/constant-pool-02.png)
 
 “哥，能再简单给我解释一下方法区，永久代和元空间的概念吗？有点模糊。”三妹说。
 
 我说，“可以呀。”
 
-- 方法区是 Java 虚拟机规范中的一个概念，就像是一个接口吧；
+- 方法区是 Java 虚拟机规范中的一个概念，就像是一个[接口](https://tobebetterjavaer.com/oo/interface.html)吧；
 - 永久代是 HotSpot 虚拟机中对方法的一个实现，就像是接口的实现类；
 - Java 8 的时候，移除了永久代，取而代之的是元空间，是方法区的另外一个实现。
 
@@ -89,4 +94,11 @@ Java 8 之后，移除了永久代，字符串常量池就移到了堆中。
 
 “是的，我现在是彻底搞懂了字符串常量池，哥，你真棒！”三妹说。
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+
+---
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

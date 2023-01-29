@@ -1,11 +1,16 @@
 ---
+title: 大白话说清楚Java反射：入门、使用、原理
+shortTitle: Java反射：入门、使用、原理
 category:
   - Java核心
 tag:
-  - Java
+  - Java重要知识点
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，大白话说清楚Java反射：入门、使用、原理
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java,反射
 ---
-
-# 大白话说Java反射：入门、使用、原理
 
 “二哥，什么是反射呀？”三妹开门见山地问。
 
@@ -170,18 +175,18 @@ public Object invoke(Object obj, Object... args)
 
 `invoke()` 方法实际上是委派给 MethodAccessor 接口来完成的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-01.png)
 
 MethodAccessor 接口有三个实现类，其中的 MethodAccessorImpl 是一个抽象类，另外两个具体的实现类继承了这个抽象类。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-02.png)
 
 - NativeMethodAccessorImpl：通过本地方法来实现反射调用；
 - DelegatingMethodAccessorImpl：通过委派模式来实现反射调用；
 
 通过 debug 的方式进入 `invoke()` 方法后，可以看到第一次反射调用会生成一个委派实现 DelegatingMethodAccessorImpl，它在生成的时候会传递一个本地实现 NativeMethodAccessorImpl。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-03.png)
 
 也就是说，`invoke()` 方法在执行的时候，会先调用 DelegatingMethodAccessorImpl，然后调用 NativeMethodAccessorImpl，最后再调用实际的方法。
 
@@ -204,7 +209,7 @@ for (int i = 0;i < 20; i++) {
 
 在 `invoke()` 方法处加断点进入 debug 模式，当 i = 15 的时候，也就是第 16 次执行的时候，会进入到 if 条件分支中，改变 DelegatingMethodAccessorImpl 的委派模式 delegate 为 `(MethodAccessorImpl)(new MethodAccessorGenerator()).generateMethod()`，而之前的委派模式 delegate 为 NativeMethodAccessorImpl。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/fanshe/fanshe-04.png)
 
 “这下明白了吧？三妹。”我说，“接下来，我们再来熟悉一下反射当中常用的 API。”
 
@@ -313,11 +318,18 @@ Method[] methods2 = System.class.getMethods();
 
 第一篇：深入理解 Java 反射和动态代理
 
->链接：https://dunwu.github.io/javacore/basics/java-reflection.html#_1-%E5%8F%8D%E5%B0%84%E7%AE%80%E4%BB%8B
+>链接：[https://dunwu.github.io/javacore/basics/java-reflection.html](https://dunwu.github.io/javacore/basics/java-reflection.html)
 
 第二篇：大白话说Java反射：入门、使用、原理：
 
->链接：https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html
+>链接：[https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html](https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 

@@ -1,15 +1,20 @@
 ---
+title: Java中的数据类型（8种基本数据类型和引用数据类型）
+shortTitle: Java中的数据类型
 category:
   - Java核心
 tag:
-  - Java
+  - Java语法基础
+description: Java程序员进阶之路，小白的零基础Java教程，Java 中的数据类型（8 种基本数据类型和引用数据类型）
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,Java 简介,Java数据类型,基本数据类型,引用数据类型,数据类型
 ---
 
-# Java 支持的 8 种基本数据类型
+## 3.3 Java中的数据类型
 
-“二哥，[上一节](https://mp.weixin.qq.com/s/IgBpLGn0L1HZymgI4hWGVA)提到了 Java 变量的数据类型，是不是指定了类型就限定了变量的取值范围啊？”三妹吸了一口麦香可可奶茶后对我说。
-
-“三妹，你不得了啊，长进很大嘛，都学会推理判断了。Java 是一种静态类型的编程语言，这意味着所有变量必须在使用之前声明好，也就是必须得先指定变量的类型和名称。”
+“Java 是一种静态类型的编程语言，这意味着所有变量必须在使用之前声明好，也就是必须得先指定变量的类型和名称。”我吸了一口麦香可可奶茶后对三妹说。
 
 Java 中的数据类型可分为 2 种：
 
@@ -19,17 +24,17 @@ Java 中的数据类型可分为 2 种：
 
 2）**引用数据类型**。
 
-除了基本数据类型以外的类型，都是所谓的引用类型。常见的有数组（对，没错，数组是引用类型）、class（也就是类），以及接口（指向的是实现接口的类的对象）。
+除了基本数据类型以外的类型，都是所谓的引用类型。常见的有[数组](https://tobebetterjavaer.com/array/array.html)（对，没错，数组是引用类型，后面我们会讲）、class（也就是[类](https://tobebetterjavaer.com/oo/object-class.html)），以及[接口](https://tobebetterjavaer.com/oo/interface.html)（指向的是实现接口的类的对象）。
 
 来个思维导图，感受下。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-01.png)
 
-通过[上一节](https://mp.weixin.qq.com/s/IgBpLGn0L1HZymgI4hWGVA)的学习，我们知道变量可以分为局部变量、成员变量、静态变量。
+[变量](https://tobebetterjavaer.com/oo/var.html)可以分为局部变量、成员变量、静态变量。
 
 当变量是局部变量的时候，必须得先初始化，否则编译器不允许你使用它。拿 int 来举例吧，看下图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-02.png)
 
 当变量是成员变量或者静态变量时，可以不进行初始化，它们会有一个默认值，仍然以 int 为例，来看代码：
 
@@ -69,17 +74,19 @@ public class LocalVar {
 | float    | 0.0f     | 4字节 |
 | double   | 0.0      | 8字节 |
 
+### 比特和字节
+
 那三妹可能要问，“比特和字节是什么鬼？”
 
-比特币听说过吧？字节跳动听说过吧？这些名字当然不是乱起的，确实和比特、字节有关系。
+比特币（Bitcoin）听说过吧？字节跳动（Byte Dance）听说过吧？这些名字当然不是乱起的，确实和比特、字节有关系。
 
-**1）bit（比特）**
+#### **1）bit（比特）**
 
 比特作为信息技术的最基本存储单位，非常小，但大名鼎鼎的比特币就是以此命名的，它的简写为小写字母“b”。
 
 大家都知道，计算机是以二进制存储数据的，二进制的一位，就是 1 比特，也就是说，比特要么为 0 要么为 1。
 
-**2）Byte（字节）**
+#### **2）Byte（字节）**
 
 通常来说，一个英文字符是一个字节，一个中文字符是两个字节。字节与比特的换算关系是：1 字节 = 8 比特。
 
@@ -87,11 +94,13 @@ public class LocalVar {
 
 （终于知道 1024 和程序员的关系了吧？狗头保命）
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-03.png)
+
+### 基本数据类型
 
 接下来，我们再来详细地了解一下 8 种基本数据类型。
 
-### 01、布尔
+#### 01、布尔
 
 布尔（boolean）仅用于存储两个值：true 和 false，也就是真和假，通常用于条件的判断。代码示例：
 
@@ -99,8 +108,7 @@ public class LocalVar {
 boolean flag = true;
 ```
 
-
-### 02、byte
+#### 02、byte
 
 byte 的取值范围在 -128 和 127 之间，包含 127。最小值为 -128，最大值为 127，默认值为 0。
 
@@ -112,10 +120,7 @@ byte a = 10;
 byte b = -10;
 ```
 
-
-
-
-### 03、short
+#### 03、short
 
 short 的取值范围在 -32,768 和 32,767 之间，包含 32,767。最小值为 -32,768，最大值为 32,767，默认值为 0。代码示例：
 
@@ -124,9 +129,7 @@ short s = 10000;
 short r = -5000;
 ```
 
-
-
-### 04、int
+#### 04、int
 
 int 的取值范围在 -2,147,483,648（-2 ^ 31）和 2,147,483,647（2 ^ 31 -1）（含）之间，默认值为 0。如果没有特殊需求，整型数据就用 int。代码示例：
 
@@ -135,7 +138,7 @@ int a = 100000;
 int b = -200000;
 ```
 
-### 05、long
+#### 05、long
 
 long 的取值范围在 -9,223,372,036,854,775,808(-2^63) 和 9,223,372,036,854,775,807(2^63 -1)（含）之间，默认值为 0。如果 int 存储不下，就用 long，整型数据就用 int。代码示例：
 
@@ -146,7 +149,7 @@ long b = -200000L;
 
 为了和 int 作区分，long 型变量在声明的时候，末尾要带上大写的“L”。不用小写的“l”，是因为小写的“l”容易和数字“1”混淆。
 
-### 06、float
+#### 06、float
 
 float 是单精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围是无限的，默认值为 0.0f。float 不适合用于精确的数值，比如说货币。代码示例：
 
@@ -156,8 +159,7 @@ float f1 = 234.5f;
 
 为了和 double 作区分，float 型变量在声明的时候，末尾要带上小写的“f”。不需要使用大写的“F”，是因为小写的“f”很容易辨别。
 
-
-### 07、double
+#### 07、double
 
 double 是双精度的浮点数，遵循 IEEE 754（二进制浮点数算术标准），取值范围也是无限的，默认值为 0.0。double 同样不适合用于精确的数值，比如说货币。代码示例：
 
@@ -169,17 +171,17 @@ double d1 = 12.3
 
 Tips：单精度是这样的格式，1 位符号，8 位指数，23 位小数，有效位数为 7 位。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-04.png)
 
 双精度是这样的格式，1 位符号，11 位指数，52 为小数，有效位数为 16 位。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-05.png)
 
 取值范围取决于指数位，计算精度取决于小数位（尾数）。小数位越多，则能表示的数越大，那么计算精度则越高。
 
 >一个数由若干位数字组成，其中影响测量精度的数字称作有效数字，也称有效数位。有效数字指科学计算中用以表示一个浮点数精度的那些数字。一般地，指一个用小数形式表示的浮点数中，从第一个非零的数字算起的所有数字。如 1.24 和 0.00124 的有效数字都有 3 位。
 
-### 08、char
+#### 08、char
 
 char 可以表示一个 16 位的 Unicode 字符，其值范围在 '\u0000'（0）和 '\uffff'（65,535）（包含）之间。代码示例：
 
@@ -189,9 +191,69 @@ char letterA = 'A'; // 用英文的单引号包裹住。
 
 那三妹可能要问，“char 既然只有一个字符，为什么占 2 个字节呢？”
 
-“主要是因为 Java 使用的是 Unicode 字符集而不是 ASCII 字符集。”
+“主要是因为 Java 使用的是 Unicode 字符集而不是 ASCII 字符集。字符集也可以叫编码，编码不同，实际占用的字节就会不同。”
 
-这又是为什么呢？我们留到下一节再讲。
+[关于字符编码](https://tobebetterjavaer.com/basic-extra-meal/java-unicode.html)
+
+
+### 关于 int 和 char 类型互转
+
+这里整理一波 int 和 char 类型的互转，它们之间比较特殊。也会在以后的学习当中经常遇到。
+
+1）可以通过[强制类型转换](https://tobebetterjavaer.com/basic-grammar/type-cast.html)将整型 int 转换为字符 char。
+
+```java
+public class SimpleTesting {
+    public static void main(String[] args) {
+        int value_int = 65;
+        char value_char  = (char) value_int;
+        System.out.println(value_char);
+    }
+} 
+```
+
+输出 `A`(其 [ASCII 值](https://tobebetterjavaer.com/basic-extra-meal/java-unicode.html)可以通过整数 65 来表示)。
+
+2）可以使用 `Character.forDigit()` 方法将整型 int 转换为字符 char。
+
+```java
+public class SimpleTesting {
+    public static void main(String[] args) {
+        //radix 10 is for decimal number, for hexa use radix 16 
+        int radix = 10; 
+        int value_int = 6;
+        char value_char = Character.forDigit(value_int , radix);
+        System.out.println(value_char );
+    }
+}
+```
+
+radix 为基数，十进制为 10，十六进制为 16。
+
+3）可以使用 int 的包装器类型 Integer 的 toString() 方法+String 的 CharAt() 方法转成 char
+
+```java
+public class SimpleTesting {
+    public static void main(String[] args) {
+        int value_int = 1;
+        char value_char = Integer.toString(value_int).charAt(0);
+System.out.println(value_char );
+    }
+}
+```
+
+4）char 转 int
+
+当然了，如果只是简单的 char 转 int，直接赋值就可以了。
+
+```java
+int a = 'a';
+```
+
+因为发生了[自动类型转换](https://tobebetterjavaer.com/basic-grammar/type-cast.html)。
+
+
+### 引用数据类型
 
 基本数据类型在作为成员变量和静态变量的时候有默认值，引用数据类型也有的。
 
@@ -220,7 +282,7 @@ null
 null
 ```
 
-null 在 Java 中是一个很神奇的存在，在你以后的程序生涯中，见它的次数不会少，尤其是伴随着令人烦恼的“[空指针异常](https://mp.weixin.qq.com/s/PBqR_uj6dd4xKEX8SUWIYQ)”，也就是所谓的 `NullPointerException`。
+null 在 Java 中是一个很神奇的存在，在你以后的程序生涯中，见它的次数不会少，尤其是伴随着令人烦恼的“[空指针异常](https://tobebetterjavaer.com/exception/npe.html)”，也就是所谓的 `NullPointerException`。
 
 也就是说，引用数据类型的默认值为 null，包括数组和接口。
 
@@ -248,7 +310,7 @@ arrays 是一个 int 类型的数组，对吧？打印结果如下所示：
 
 `[I` 表示数组是 int 类型的，@ 后面是十六进制的 hashCode——这样的打印结果太“人性化”了，一般人表示看不懂！为什么会这样显示呢？查看一下 `java.lang.Object` 类的 `toString()` 方法就明白了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-06.png)
 
 数组虽然没有显式定义成一个类，但它的确是一个对象，继承了祖先类 Object 的所有方法。那为什么数组不单独定义一个类来表示呢？就像字符串 String 类那样呢？
 
@@ -294,8 +356,7 @@ public class ArrayList<E> extends AbstractList<E>
 
 对于接口类型的引用变量来说，你没法直接 new 一个：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-07.png)
-
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/nine-07.png)
 
 只能 new 一个实现它的类的对象——那自然接口也是引用数据类型了。
 
@@ -311,6 +372,8 @@ public class ArrayList<E> extends AbstractList<E>
 - 1、变量名指向的是存储对象的内存地址，在栈上。
 - 2、内存地址指向的对象存储在堆上。
 
+### 堆和栈
+
 看到这，三妹是不是又要问，“堆是什么，栈又是什么？”
 
 堆是堆（heap），栈是栈（stack），如果看到“堆栈”的话，请不要怀疑自己，那是翻译的错，堆栈也是栈，反正我很不喜欢“堆栈”这种叫法，容易让新人掉坑里。
@@ -325,6 +388,45 @@ public class ArrayList<E> extends AbstractList<E>
 
 这么说就理解了吧？
 
-“好了，三妹，关于 Java  中的数据类型就先说这么多吧，你是不是已经清楚了？”转动了一下僵硬的脖子后，我对三妹说。
+如果还不理解的话，可以看一下这个视频，讲的非常不错：[什么是堆？什么是栈？他们之间有什么区别和联系？](https://www.zhihu.com/question/19729973/answer/2238950166)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+用图来表示一下，左侧是栈，右侧是堆。
+
+![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-grammar/basic-data-type-dc26645a-3ed8-4ad4-815d-52528ad12d6b.png)
+
+这里再补充一些额外的知识点，能看懂就继续吸收，看不懂可以先去学下一节，以后再来补，没关系的。学习就是这样，可以跳过，可以温故。
+
+举个例子。
+
+```java
+String a = new String("沉默王二")
+```
+
+这段代码会先在堆里创建一个 沉默王二的字符串对象，然后再把对象的引用 a 放到栈里面。这里面还会涉及到[字符串常量池](https://tobebetterjavaer.com/string/constant-pool.html)，后面会讲。
+
+那么对于这样一段代码，有基本数据类型的变量，有引用类型的变量，堆和栈都是如何存储他们的呢？
+
+```java
+public void test()
+{
+    int i = 4;
+    int y = 2;
+    Object o1 = new Object();
+}
+```
+
+我来画个图表示下。
+
+![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-grammar/basic-data-type-3d5b3e40-1abb-4624-8282-b83e58388825.png)
+
+应该一目了然了吧？
+
+“好了，三妹，关于 Java 中的数据类型就先说这么多吧，你是不是已经清楚了？”转动了一下僵硬的脖子后，我对三妹说。
+
+---
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

@@ -1,9 +1,15 @@
 ---
+title: 全面理解Java的内存模型（JMM）
+shortTitle: 全面理解Java的内存模型（JMM）
+description: 全面理解Java的内存模型（JMM）
 category:
   - Java核心
-  - 并发编程
 tag:
-  - Java
+  - Java并发编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,并发编程,多线程,Thread,内存模型
 ---
 
 # 全面理解Java的内存模型（JMM）
@@ -28,14 +34,14 @@ tag:
 
 这两种模型之间的区别如下表所示：
 
-![两种并发模型的比较](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-a610752d-ef73-47f2-b02c-6954eb3d62bf.png)
+![两种并发模型的比较](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-a610752d-ef73-47f2-b02c-6954eb3d62bf.png)
 
 **在Java中，使用的是共享内存并发模型**。
 
 ## Java内存模型的抽象结构
 ### 运行时内存的划分
 先谈一下运行时数据区，下面这张图相信大家一点都不陌生：
-![Java运行时数据区域](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-0b9e4b1e-90e2-41bb-be89-f65e3a10fa08.png)
+![Java运行时数据区域](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-0b9e4b1e-90e2-41bb-be89-f65e3a10fa08.png)
 
 对于每一个线程来说，栈都是私有的，而堆是共有的。
 
@@ -50,7 +56,7 @@ tag:
 
 Java线程之间的通信由Java内存模型（简称JMM）控制，从抽象的角度来说，JMM定义了线程和主内存之间的抽象关系。JMM的抽象示意图如图所示：
 
-![JMM抽象示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-f02219aa-e762-4df0-ac08-6f4cceb535c2.jpg)
+![JMM抽象示意图](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-f02219aa-e762-4df0-ac08-6f4cceb535c2.jpg)
 
 从图中可以看出：
 1. 所有的共享变量都存在主内存中。
@@ -150,13 +156,13 @@ Java内存模型（JMM）对于正确同步多线程程序的内存一致性做�
 
 假设**正确使用了同步**，A线程的3个操作执行后释放锁，B线程获取同一个锁。那么在**顺序一致性模型**中的执行效果如下所示：
 
-![正确同步图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-9ce5973e-6100-41e6-96b8-29ddb738e7f8.png)
+![正确同步图](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-9ce5973e-6100-41e6-96b8-29ddb738e7f8.png)
 
 操作的执行整体上有序，并且两个线程都只能看到这个执行顺序。
 
 假设**没有使用同步**，那么在**顺序一致性模型**中的执行效果如下所示：
 
-![没有正确同步图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-6357c025-a6e0-4c89-939d-040e549fac12.png)
+![没有正确同步图](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-6357c025-a6e0-4c89-939d-040e549fac12.png)
 
 操作的执行整体上无序，但是两个线程都只能看到这个执行顺序。之所以可以得到这个保证，是因为顺序一致性模型中的**每个操作必须立即对任意线程可见**。
 
@@ -251,4 +257,10 @@ System.out.println(sum);
 >- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 >- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

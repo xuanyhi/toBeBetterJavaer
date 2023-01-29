@@ -1,11 +1,16 @@
 ---
+title: 一文彻底搞懂Java异常处理，YYDS
+shortTitle: 一文彻底搞懂Java异常处理
 category:
   - Java核心
 tag:
-  - Java
+  - 异常处理
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，一文彻底搞懂Java异常处理，YYDS
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java,异常处理
 ---
-
-# 一文读懂Java异常处理
 
 ## 一、什么是异常
 
@@ -83,7 +88,7 @@ checked 异常（检查型异常）在源代码里必须显式地捕获或者抛
 
 “我先画一幅思维导图给你感受一下。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/gailan-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/gailan-01.png)
 
 首先，Exception 和 Error 都继承了 Throwable 类。换句话说，只有 Throwable 类（或者子类）的对象才能使用 throw 关键字抛出，或者作为 catch 的参数类型。
 
@@ -111,7 +116,7 @@ Class clz = Class.forName("com.itwanger.s41.Demo1");
 
 如果没做处理，比如说在 Intellij IDEA 环境下，就会提示你这行代码可能会抛出 `java.lang.ClassNotFoundException`。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/gailan-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/gailan-02.png)
 
 建议你要么使用 try-catch 进行捕获：
 
@@ -216,11 +221,11 @@ Exception in thread "main" java.lang.ArithmeticException: 年纪未满 18 岁，
     at com.itwanger.s43.ThrowDemo.main(ThrowDemo.java:16)
 ```
 
-“throws 关键字的作用就和 throw 完全不同。”我说，“[异常处理机制](https://mp.weixin.qq.com/s/fXRJ1xdz_jNSSVTv7ZrYGQ)这小节中讲了 checked exception 和 unchecked exception，也就是检查型异常和非检查型异常；对于检查型异常来说，如果你没有做处理，编译器就会提示你。”
+“throws 关键字的作用就和 throw 完全不同。”我说，“前面的小节里已经讲了 checked exception 和 unchecked exception，也就是检查型异常和非检查型异常；对于检查型异常来说，如果你没有做处理，编译器就会提示你。”
 
 `Class.forName()` 方法在执行的时候可能会遇到 `java.lang.ClassNotFoundException` 异常，一个检查型异常，如果没有做处理，IDEA 就会提示你，要么在方法签名上声明，要么放在 try-catch 中。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/throw-throws-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/throw-throws-01.png)
 
 “那什么情况下使用 throws 而不是 try-catch 呢？”三妹问。
 
@@ -278,7 +283,8 @@ throw new ArithmeticException("算术异常");
 4）throws 关键字在声明异常的时候可以跟多个，用逗号隔开；而 throw 关键字每次只能抛出一个异常。
 
 ## 五、关于 try-catch-finally
-“二哥，[上一节](https://mp.weixin.qq.com/s/fXRJ1xdz_jNSSVTv7ZrYGQ)你讲了异常处理机制，这一节讲什么呢？”三妹问。
+
+“二哥，之前你讲了异常处理机制，这一节讲什么呢？”三妹问。
 
 “该讲 try-catch-finally 了。”我说，“try 关键字后面会跟一个大括号 `{}`，我们把一些可能发生异常的代码放到大括号里；`try` 块后面一般会跟 `catch` 块，用来处理发生异常的情况；当然了，异常不一定会发生，为了保证发不发生异常都能执行一些代码，就会跟一个 `finally` 块。”
 
@@ -456,8 +462,14 @@ static int test2 () {
 
 “三妹，来看一下源码的文档注释就全明白了！”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/try-catch-finally-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/try-catch-finally-01.png)
 
 至于参数 status 的值也很好理解，如果是异常退出，设置为非 0 即可，通常用 1 来表示；如果是想正常退出程序，用 0 表示即可。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

@@ -1,21 +1,27 @@
 ---
+title: Java抽象类，看这一篇就够了，豁然开朗
+shortTitle: Java抽象类
+description: Java程序员进阶之路，小白的零基础Java教程，认真聊聊 Java抽象类
 category:
-  - Java核心
+  - Java 核心
 tag:
-  - Java
+  - 面向对象编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,Java抽象类,抽象类
 ---
-
-# Java抽象类
 
 
 “二哥，你这明显加快了更新的频率呀！”三妹对于我最近的肝劲由衷的佩服了起来。
 
-“哈哈，是呀，这次不能再断更了，我要再更 175 篇，总计 200 篇，给广大的学弟学妹们一个完整的 Java 学习体系。”我对未来充满了信心。
+“哈哈，是呀，我要给广大的学弟学妹们一个完整的 Java 学习体系。”我对未来充满了信心。
 
 “那就开始吧。”三妹说。
 
--------
+---
 
+## 定义抽象类
 
 定义抽象类的时候需要用到关键字 `abstract`，放在 `class` 关键字前，就像下面这样。
 
@@ -26,9 +32,11 @@ abstract class AbstractPlayer {
 
 关于抽象类的命名，《阿里的 Java 开发手册》上有强调，“抽象类命名要使用 Abstract 或 Base 开头”，这条规约还是值得遵守的。
 
+## 抽象类的特征
+
 抽象类是不能实例化的，尝试通过 `new` 关键字实例化的话，编译器会报错，提示“类是抽象的，不能实例化”。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-01.png)
 
 虽然抽象类不能实例化，但可以有子类。子类通过 `extends` 关键字来继承抽象类。就像下面这样。
 
@@ -41,11 +49,11 @@ public class BasketballPlayer extends AbstractPlayer {
 
 当我们尝试在一个普通类中定义抽象方法的时候，编译器会有两处错误提示。第一处在类级别上，提示“这个类必须通过 `abstract` 关键字定义”，见下图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-02.png)
 
 第二处在尝试定义 abstract 的方法上，提示“抽象方法所在的类不是抽象的”，见下图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-03.png)
 
 抽象类中既可以定义抽象方法，也可以定义普通方法，就像下面这样：
 
@@ -72,13 +80,15 @@ public class BasketballPlayer extends AbstractPlayer {
 
 如果没有实现的话，编译器会提示“子类必须实现抽象方法”，见下图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-04.png)
+
+## 抽象类的应用场景
 
 “二哥，抽象方法我明白了，那什么时候使用抽象方法呢？能给我讲讲它的应用场景吗？”三妹及时的插话道。
 
 “这问题问的恰到好处呀！”我扶了扶眼镜继续说。
 
-**第一种场景**。
+### **第一种场景**
 
 当我们希望一些通用的功能被多个子类复用的时候，就可以使用抽象类。比如说，AbstractPlayer 抽象类中有一个普通的方法 `sleep()`，表明所有运动员都需要休息，那么这个方法就可以被子类复用。
 
@@ -120,7 +130,7 @@ footballPlayer.sleep();
 
 这样是不是就实现了代码的复用呢？
 
-**第二种场景**。
+### **第二种场景**
 
 当我们需要在抽象类中定义好 API，然后在子类中扩展实现的时候就可以使用抽象类。比如说，AbstractPlayer  抽象类中定义了一个抽象方法 `play()`，表明所有运动员都可以从事某项运动，但需要对应子类去扩展实现，表明篮球运动员打篮球，足球运动员踢足球。
 
@@ -228,7 +238,7 @@ public class FileReaderTest {
 
 在项目的 resource 目录下建一个文本文件，名字叫 helloworld.txt，里面的内容就是“Hello World”。文件的具体位置如下图所示，我用的集成开发环境是 Intellij IDEA。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-05.png)
 
 
 在 resource 目录下的文件可以通过 `ClassLoader.getResource()` 的方式获取到 URI 路径，然后就可以取到文本内容了。
@@ -240,7 +250,14 @@ public class FileReaderTest {
 [HELLO WORLD]
 ```
 
--------
+## 抽象类总结
+
+好了，对于抽象类我们简单总结一下：
+
+1、抽象类不能被实例化。
+2、抽象类应该至少有一个抽象方法，否则它没有任何意义。
+3、抽象类中的抽象方法没有方法体。
+4、抽象类的子类必须给出父类中的抽象方法的具体实现，除非该子类也是抽象类。
 
 “完了吗？二哥”三妹似乎还沉浸在聆听教诲的快乐中。
 
@@ -248,4 +265,12 @@ public class FileReaderTest {
 
 “呼。。。。。”一个大大的眼圈飘散开来，又是愉快的一天~
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
+----
+
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

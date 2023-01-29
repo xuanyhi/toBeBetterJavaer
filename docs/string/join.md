@@ -1,13 +1,19 @@
 ---
+title: 最优雅的Java字符串拼接是哪种方式？
+shortTitle: Java字符串拼接
 category:
   - Java核心
 tag:
-  - Java
+  - 数组&字符串
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，最优雅的Java字符串拼接是哪种方式？
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java字符串,String,字符串拼接
 ---
 
-# Java字符串拼接的几种方式
 
-“哥，你让我看的《Java 开发手册》上有这么一段内容：循环体内，拼接字符串最好使用 StringBuilder 的 `append()` 方法，而不是 + 号操作符。这是为什么呀？”三妹疑惑地问。
+“哥，你让我看的《[Java 开发手册](https://tobebetterjavaer.com/nice-article/weixin/sulwgalcpdssbjavakfsc.html)》上有这么一段内容：循环体内，拼接字符串最好使用 StringBuilder 的 `append()` 方法，而不是 + 号操作符。这是为什么呀？”三妹疑惑地问。
 
 “好的，三妹，哥来慢慢给你讲。”我回答。
 
@@ -124,7 +130,7 @@ public class com.itwanger.thirtyseven.Demo {
 
 “好吧，总之就是 Java 9 以后，JDK 用了另外一种方法来动态解释 + 号操作符，具体的实现方式在字节码指令层面已经看不到了，所以我就以 Java 8 来继续讲解吧。”
 
-“再回到《Java 开发手册》上的那段内容：循环体内，拼接字符串最好使用 StringBuilder 的 `append()` 方法，而不是 + 号操作符。原因就在于循环体内如果用 + 号操作符的话，就会产生大量的 StringBuilder 对象，不仅占用了更多的内存空间，还会让 Java 虚拟机不同的进行垃圾回收，从而降低了程序的性能。”
+“再回到《Java 开发手册》上的那段内容：循环体内，拼接字符串最好使用 StringBuilder 的 `append()` 方法，而不是 + 号操作符。原因就在于循环体内如果用 + 号操作符的话，就会产生大量的 StringBuilder 对象，不仅占用了更多的内存空间，还会让 Java 虚拟机不停的进行垃圾回收，从而降低了程序的性能。”
 
 更好的写法就是在循环的外部新建一个 StringBuilder 对象，然后使用 `append()` 方法将循环体内的字符串添加进来：
 
@@ -370,4 +376,10 @@ public static String join(final Object[] array, String separator, final int star
 
 “嗯，哥，你休息吧，我把这些例子再重新跑一遍。”三妹说。
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+---
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

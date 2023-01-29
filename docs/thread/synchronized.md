@@ -1,12 +1,18 @@
 ---
+title: Java中的synchronized锁的到底是什么？
+shortTitle: synchronized锁的到底是什么？
+description: Java中的synchronized锁的到底是什么？
 category:
   - Java核心
-  - 并发编程
 tag:
-  - Java
+  - Java并发编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,并发编程,多线程,Thread,synchronized
 ---
 
-# Java中的synchronized关键字锁的到底是什么？
+# Java中的synchronized锁的到底是什么？
 
 这篇文章我们来聊一聊Java多线程里面的“锁”。
 
@@ -145,7 +151,7 @@ Hotspot的作者经过以往的研究发现大多数情况下**锁不仅不存�
 
 线程竞争偏向锁的过程如下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-c223913c-6c10-4dd0-849c-5e8f981cba48.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-c223913c-6c10-4dd0-849c-5e8f981cba48.jpg)
 
 图中涉及到了lock record指针指向当前堆栈中的最近一个lock record，是轻量级锁按照先来先服务的模式进行了轻量级锁的加锁。
 
@@ -167,7 +173,7 @@ Hotspot的作者经过以往的研究发现大多数情况下**锁不仅不存�
 
 下面这个经典的图总结了偏向锁的获得和撤销：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-23a5729f-71d5-44ce-af19-72ee20ae753e.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-23a5729f-71d5-44ce-af19-72ee20ae753e.png)
 
 ### 轻量级锁
 
@@ -193,7 +199,7 @@ JVM会为每个线程在当前线程的栈帧中创建用于存储锁记录的�
 
 一张图说明加锁和释放锁的过程：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-1bb5f956-d3da-4e7b-b426-1d5d9314fe5b.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-1bb5f956-d3da-4e7b-b426-1d5d9314fe5b.png)
 
 ### 重量级锁
 
@@ -249,4 +255,10 @@ Owner：获得锁的线程称为Owner
 >- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 >- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

@@ -1,11 +1,16 @@
 ---
+title: 深入理解Java中的泛型
+shortTitle: 深入理解Java中的泛型
 category:
   - Java核心
 tag:
-  - Java
+  - Java重要知识点
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，深入理解Java中的泛型
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java,泛型
 ---
-
-# 深入理解Java泛型
 
 “二哥，为什么要设计泛型啊？”三妹开门见山地问。
 
@@ -117,7 +122,7 @@ class Arraylist<E> {
 
 不过，说实话，泛型方法的定义看起来略显晦涩。来一副图吧（注意：方法返回类型和方法参数类型至少需要一个）。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/generic-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/generic-01.png)
 
 现在，我们来调用一下泛型方法。
 
@@ -459,10 +464,16 @@ list3.add(new Wangxiaoer());
 
 “三妹，关于泛型，这里还有一篇很不错的文章，你等会去看一下。”我说。
 
->https://www.pdai.tech/md/java/basic/java-basic-x-generic.html
+>[https://www.pdai.tech/md/java/basic/java-basic-x-generic.html](https://www.pdai.tech/md/java/basic/java-basic-x-generic.html)
 
 “对泛型机制讲的也很透彻，你结合二哥给你讲的这些，再深入的学习一下。”
 
 “好的，二哥。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

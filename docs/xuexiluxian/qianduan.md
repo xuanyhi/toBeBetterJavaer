@@ -1,31 +1,23 @@
 ---
 star: true
-title: 2022最新超详细的前端学习路线（建议收藏🔥）
+title: 2023最新超详细的前端学习路线（建议收藏🔥）
 shortTitle: 前端学习路线
 category:
   - 学习路线
 tag:
-  - 前端
-  - 前端开发
-  - 前端学习
-  - 前端工程师
-  - JavaScript
-  - 前端学习路线
+  - 学习路线
 description: 前端学习路线图（roadmap）
 head:
   - - meta
-    - name: description
-      content: 前端学习路线图（roadmap）
-  - - meta
     - name: keywords
-      content: 前端,前端学习路线,JavaScript
+      content: 前端,前端学习路线,JavaScript,学习路线
 ---
 
 大家好，我是二哥呀！最近总有一些读者私信问我：“能推荐一些前端的学习资料吗？”那作为一名正儿八经的全栈型程序员，必须得给大家整一波了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-b6d3ccb4-bd13-447e-b88d-f0016b57da49.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-b6d3ccb4-bd13-447e-b88d-f0016b57da49.png)
 
-### 语言基础
+## 语言基础
 
 1）HTML 教程，里面包含了数百个 HTML 实例，对初学者的友好程度五颗星。
 
@@ -49,13 +41,13 @@ head:
 
 6）📚《JavaScript高级程序设计（第3版）》，这是一本实体书，豆瓣评分高达 9.3 分，是前端程序员进阶必看的书籍。据网友说，他参加阿里面试时的一小半问题都出自于此书。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-ea8e074a-9bc4-4780-a4b1-acf855df7bc1.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-ea8e074a-9bc4-4780-a4b1-acf855df7bc1.png)
 
 7）TypeScript 中文版，TypeScript 是 JavaScript 的超集，也可以编译成普通的 JavaScript 代码，这份中文手册紧跟官方的每个细节，是非常好的一份入门教程。
 
 >[https://zhongsp.gitbooks.io/typescript-handbook/content/](https://zhongsp.gitbooks.io/typescript-handbook/content/)
 
-### 框架和类库
+## 框架和类库
 
 1）Vue.js 官方文档，讲真，学习一门新技术的时候，官方文档肯定是首选。我推荐的策略是以理解为主，难以理解的内容可以暂时跳过，因为死磕的东西可能一时半会用不上。快速把文章看一遍，扩充自己对这门技术的认知，对以后掌握它会很有帮助。
 
@@ -81,7 +73,7 @@ head:
 
 >[https://zh-hans.reactjs.org/tutorial/tutorial.html](https://zh-hans.reactjs.org/tutorial/tutorial.html)
 
-### 前端工程
+## 前端工程
 
 1）Webpack 中文文档，Webpack 是一个前端资源加载/打包工具，它根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。
 
@@ -95,7 +87,7 @@ head:
 
 >[https://backlog.com/git-tutorial/cn/](https://backlog.com/git-tutorial/cn/)
 
-### 运行环境
+## 运行环境
 
 1）图解浏览器的基本工作原理，这篇文章图文并茂，里面还有一些质量非常高的视频，帮助前端工程师理解浏览器的工作原理，以及了解从在浏览器地址栏中输入 URL 到页面展现的短短几秒内浏览器究竟做了什么等等。
 
@@ -105,11 +97,11 @@ head:
 
 >[http://nqdeng.github.io/7-days-nodejs/](http://nqdeng.github.io/7-days-nodejs/)
 
-### 项目与业务
+## 项目与业务
 
 1）📚《高性能网站建设指南》，这本书介绍了网站性能问题的现状、产生的原因，以及改善或解决性能问题的原则、技术技巧和最佳实践
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-92d3c42c-c453-473f-aefc-9137c93a939d.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-92d3c42c-c453-473f-aefc-9137c93a939d.png)
 
 
 2）深入了解前端监控原理，这篇文章主要讲了如何进行数据采集和数据上报。
@@ -124,7 +116,7 @@ head:
 
 >[https://github.com/ljianshu/Blog/issues/56](https://github.com/ljianshu/Blog/issues/56)
 
-### 计算机基础
+## 计算机基础
 
 1）大前端开发者需要了解的基础编译原理和语言知识
 
@@ -132,7 +124,7 @@ head:
 
 2）📚《图解HTTP》，前端工程师对网络协议如果能掌握的比较透彻的话，对整体前后端的沟通是非常有帮助的。像 TCP/IP网络协议、三次握手和四次挥手、DNS的作用、CDN的作用和原理、HTTP、HTTPS、WebSocket 等等这些知识点，我认为都是一名合格的前端工程师应该掌握的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-ae981ec4-ea98-4bb1-a1eb-d8a21a9648cb.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-ae981ec4-ea98-4bb1-a1eb-d8a21a9648cb.png)
 
 3）JavaScript 实现的算法和数据结构，附详细解释和刷题指南。大部分前端工程师对数据结构与算法这部分知识都有些欠缺，如果想要突破更高的天花板，这部分知识是必不可少的，非常有用！
 
@@ -145,7 +137,7 @@ head:
 - 码云地址：[https://gitee.com/itwanger/JavaBooks](https://gitee.com/itwanger/JavaBooks#javascript)
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-books.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/qianduan-books.jpg)
 
 简单罗列一下：
 
@@ -159,4 +151,11 @@ head:
 - JavaScript异步编程
 - JavaScript语言精粹
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+---------
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

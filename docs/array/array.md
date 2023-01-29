@@ -1,13 +1,20 @@
 ---
+title: 浅入浅出Java数组
+shortTitle: Java数组
 category:
   - Java核心
 tag:
-  - Java
+  - 数组&字符串
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，Java数组
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java数组,数组
 ---
 
-# 深入理解Java数组
+## 4.1 Java数组
 
-“哥，我看你之前的文章里提到，ArrayList 的内部是用数组实现的，我就对数组非常感兴趣，想深入地了解一下，今天终于到这个环节了，好期待呀！”三妹的语气里显得很兴奋。
+“二哥，我看你公众号的一篇文章里提到，[ArrayList](https://tobebetterjavaer.com/collection/arraylist.html) 的内部是用数组实现的，我就对数组非常感兴趣，想深入地了解一下，今天终于到这个环节了，好期待呀！”三妹的语气里显得很兴奋。
 
 “的确是的，看 ArrayList 的源码就一清二楚了。”我一边说，一边打开 Intellij IDEA，并找到了 ArrayList 的源码。
 
@@ -66,9 +73,9 @@ int anOtherArray[];
 int[] anArray = new int[10];
 ```
 
-看到了没？上面这行代码中使用了 new 关键字，这就意味着数组的确是一个对象，只有对象的创建才会用到 new 关键字，基本数据类型是不用的。然后，我们需要在方括号中指定数组的长度。
+看到了没？上面这行代码中使用了 new 关键字，这就意味着数组的确是一个对象，只有对象的创建才会用到 new 关键字，[基本数据类型](https://tobebetterjavaer.com/basic-grammar/basic-data-type.html)是不用的。然后，我们需要在方括号中指定数组的长度。
 
-这时候，数组中的每个元素都会被初始化为默认值，int 类型的就为 0，Object 类型的就为 null。 不同数据类型的默认值不同，可以参照[之前的文章](https://mp.weixin.qq.com/s/twim3w_dp5ctCigjLGIbFw)。
+这时候，数组中的每个元素都会被初始化为默认值，int 类型的就为 0，Object 类型的就为 null。 不同数据类型的默认值不同，可以参照[之前的文章](https://tobebetterjavaer.com/basic-grammar/basic-data-type.html)。
 
 另外，还可以使用大括号的方式，直接初始化数组中的元素：
 
@@ -192,7 +199,6 @@ String[] anArray = new String[] {"沉默王二", "一枚有趣的程序员", "�
 Stream<String> aStream = Arrays.stream(anArray);
 ```
 
-
 如果想对数组进行排序的话，可以使用 Arrays 类提供的 `sort()` 方法。
 
 - 基本数据类型按照升序排列
@@ -248,4 +254,10 @@ int index = Arrays.binarySearch(anArray, 4);
 
 “除了一维数组，还有二维数组，三妹你可以去研究下，比如说用二维数组打印一下杨辉三角。”说完，我就去阳台上休息了，留三妹在那里学习，不能打扰她。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

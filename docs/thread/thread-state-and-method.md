@@ -1,22 +1,15 @@
 ---
 title: Java线程的6种状态及切换(透彻讲解)
 shortTitle: Java线程的6种状态
+description: Java线程的6种状态及切换(透彻讲解)
 category:
   - Java核心
-  - 并发编程
 tag:
-  - Java
   - Java并发编程
-  - Java多线程
-  - Java Thread
-description: Java线程的6种状态及切换(透彻讲解)
 head:
   - - meta
-    - name: description
-      content: Java线程的6种状态及切换(透彻讲解)
-  - - meta
     - name: keywords
-      content: Java,Java并发编程,Java多线程,Java Thread
+      content: Java,并发编程,多线程,Thread,线程状态
 ---
 
 ## 操作系统中的线程状态转换
@@ -25,7 +18,7 @@ head:
 
 > 在现在的操作系统中，线程是被视为轻量级进程的，所以**操作系统线程的状态其实和操作系统进程的状态是一致的**。
 
-![系统进程/线程转换图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/thread-state-and-method-f60caaad-ad47-4edc-8d0a-ab736c2e8500.png)
+![系统进程/线程转换图](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/thread-state-and-method-f60caaad-ad47-4edc-8d0a-ab736c2e8500.png)
 
 操作系统线程主要有以下三个状态：
 
@@ -204,7 +197,7 @@ public static State toThreadState(int var0) {
 
 ## 线程状态的转换
 根据上面关于线程状态的介绍我们可以得到下面的**线程状态转换图**：
-![线程状态转换图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/thread-state-and-method-18f0d338-1c19-4e18-a0cc-62e97fc39272.png)
+![线程状态转换图](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/thread-state-and-method-18f0d338-1c19-4e18-a0cc-62e97fc39272.png)
 
 ### BLOCKED与RUNNABLE状态的转换
 我们在上面说到：处于BLOCKED状态的线程是因为在等待锁的释放。假如这里有两个线程a和b，a线程提前获得了锁并且暂未释放锁，此时b就处于BLOCKED状态。我们先来看一个例子：
@@ -358,4 +351,10 @@ b线程状态仍然不固定（RUNNABLE或BLOCKED）。
 >- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 >- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

@@ -1,5 +1,9 @@
 # 网络日志
 
+### 2022年08月12日
+
+- 优化面向对象编程内容
+
 ### 2022年06月22日
 
 - [增加博客页](/blog.md)
@@ -15,7 +19,6 @@
 ### 2022年05月31日
 
 - 升级 VuePress-hope 的版本
-- [增加访问权限修饰符](/nice-article/bokeyuan-jianxijavazhongdifangwenquanxiankongzhi.md)
 
 ### 2022年05月21日
 

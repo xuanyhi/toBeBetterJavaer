@@ -1,22 +1,43 @@
 ---
+title: 看完这篇，Java IO 不再混乱！
+shortTitle: 看完这篇，Java IO不再混乱
 category:
   - Java核心
 tag:
-  - Java
+  - Java IO
+description: Java程序员进阶之路，小白的零基础Java教程，Java IO 体系看起来类很多，感觉很复杂，但其实是 IO 涉及的因素太多了。在设计 IO 相关的类时，编写者也不是从同一个方面考虑的，所以会给人一种很乱的感觉，并且还有设计模式的使用，更加难以使用这些 IO 类，所以特地对 Java 的 IO 做一个总结。
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,Java IO,io,输入输出流
 ---
-
-# Java IO学习整理
 
 
 “老王，Java IO 也太上头了吧？”新兵蛋子小二向头顶很凉快的老王抱怨道，“你瞧，我就按照传输方式对 IO 进行了一个简单的分类，就能搞出来这么多的玩意！”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-01.png)
 
 好久没搞过 IO 了，老王看到这幅思维导图也是吃了一惊。想想也是，他当初学习 Java IO 的时候头也大，乌央乌央的一片，全是类，估计是所有 Java 包里面类最多的，一会是 Input 一会是 Output，一会是 Reader 一会是 Writer，真不知道 Java 的设计者是怎么想的。
 
 看着肺都快要气炸的小二，老王深深地吸了一口气，耐心地对小二说：“主要是 Java 的设计者考虑得比较多吧，所以 IO 给人一种很乱的感觉，我来给你梳理一下。”
 
-### 01、传输方式划分
+## 00、初识 Java IO
+
+IO，即in和out，也就是输入和输出，指应用程序和外部设备之间的数据传递，常见的外部设备包括文件、管道、网络连接。
+
+Java 中是通过流处理IO 的，那么什么是流？
+
+流（Stream），是一个抽象的概念，是指一连串的数据（字符或字节），是以先进先出的方式发送信息的通道。
+
+当程序需要读取数据的时候，就会开启一个通向数据源的流，这个数据源可以是文件，内存，或是网络连接。类似的，当程序需要写入数据的时候，就会开启一个通向目的地的流。这时候你就可以想象数据好像在这其中“流”动一样。
+
+一般来说关于流的特性有下面几点：
+
+- 先进先出：最先写入输出流的数据最先被输入流读取到。
+- 顺序存取：可以一个接一个地往流中写入一串字节，读出时也将按写入顺序读取一串字节，不能随机访问中间的数据。（RandomAccessFile除外）
+- 只读或只写：每个流只能是输入流或输出流的一种，不能同时具备两个功能，输入流只能进行读操作，对输出流只能进行写操作。在一个数据传输通道中，如果既要写入数据，又要读取数据，则要分别提供两个流。
+
+## 01、传输方式划分
 
 就按照你的那副思维导图来说吧。
 
@@ -28,11 +49,11 @@ tag:
 
 通常来说，一个字母或者一个字符占用一个字节，一个汉字占用两个字节。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-02.png)
 
 具体还要看字符编码，比如说在 UTF-8 编码下，一个英文字母（不分大小写）为一个字节，一个中文汉字为三个字节；在 Unicode 编码中，一个英文字母为一个字节，一个中文汉字为两个字节。
 
- PS：关于字符编码，可以看前面的章节：[锟斤拷](https://mp.weixin.qq.com/s/pNQjlXOivIgO3pbYc0GnpA)
+ PS：关于字符编码，可以看前面的章节：[锟斤拷](https://tobebetterjavaer.com/basic-extra-meal/java-unicode.html)
 
 明白了字节与字符的区别，再来看字节流和字符流就会轻松多了。
 
@@ -80,7 +101,39 @@ tag:
 
 理解了上面这些方法，基本上 IO 的灵魂也就全部掌握了。
 
-### 02、操作对象划分
+字节流和字符流的区别：
+
+- 字节流一般用来处理图像、视频、音频、PPT、Word等类型的文件。字符流一般用于处理纯文本类型的文件，如TXT文件等，但不能处理图像视频等非文本文件。用一句话说就是：字节流可以处理一切文件，而字符流只能处理纯文本文件。
+- 字节流本身没有缓冲区，缓冲字节流相对于字节流，效率提升非常高。而字符流本身就带有缓冲区，缓冲字符流相对于字符流效率提升就不是那么大了。
+
+以写文件为例，我们查看字符流的源码，发现确实有利用到缓冲区：
+
+```java
+private char[] writeBuffer;
+
+/**
+ * Size of writeBuffer, must be >= 1
+ */
+private static final int WRITE_BUFFER_SIZE = 1024;
+
+public void write(String str, int off, int len) throws IOException {
+    synchronized (lock) {
+        char cbuf[];
+        if (len <= WRITE_BUFFER_SIZE) {
+            if (writeBuffer == null) {
+                writeBuffer = new char[WRITE_BUFFER_SIZE];
+            }
+            cbuf = writeBuffer;
+        } else {    // Don't permanently allocate very large buffers.
+            cbuf = new char[len];
+        }
+        str.getChars(off, (off + len), cbuf, 0);
+        write(cbuf, 0, len);
+    }
+}
+```
+
+## 02、操作对象划分
 
 小二，你细想一下，IO IO，不就是输入输出（Input/Output）嘛：
 
@@ -91,10 +144,10 @@ tag:
 
 文件操作算是 IO 中最典型的操作了，也是最频繁的操作。那其实你可以换个角度来思考，比如说按照 IO 的操作对象来思考，IO 就可以分类为：文件、数组、管道、基本数据类型、缓冲、打印、对象序列化/反序列化，以及转换等。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-03.png)
 
 
-**1）文件**
+### **1）文件**
 
 文件流也就是直接操作文件的流，可以细分为字节流（FileInputStream 和 FileOuputStream）和字符流（FileReader 和 FileWriter）。
 
@@ -144,7 +197,7 @@ fileWriter.close();
 
 当掌握了文件的输入输出，其他的自然也就掌握了，都大差不差。
 
-**2）数组**
+### **2）数组**
 
 通常来说，针对文件的读写操作，使用文件流配合缓冲流就够用了，但为了提升效率，频繁地读写文件并不是太好，那么就出现了数组流，有时候也称为内存流。
 
@@ -176,7 +229,7 @@ byte[] dest =bos.toByteArray();
 bos.close();
 ```
 
-**3）管道**
+### **3）管道**
 
 Java 中的管道和 Unix/Linux 中的管道不同，在 Unix/Linux 中，不同的进程之间可以通过管道来通信，但 Java 中，通信的双方必须在同一个进程中，也就是在同一个 JVM 中，管道为线程之间的通信提供了通信能力。
 
@@ -219,7 +272,7 @@ thread1.start();
 thread2.start();
 ```
 
-**4）基本数据类型**
+### **4）基本数据类型**
 
 基本数据类型输入输出流是一个字节流，该流不仅可以读写字节和字符，还可以读写基本数据类型。
 
@@ -251,18 +304,18 @@ das.writeBoolean(true);
 das.writeChar('A');
 ```
 
-**5）缓冲**
+### **5）缓冲**
 
 CPU 很快，它比内存快 100 倍，比磁盘快百万倍。那也就意味着，程序和内存交互会很快，和硬盘交互相对就很慢，这样就会导致性能问题。
 
 为了减少程序和硬盘的交互，提升程序的效率，就引入了缓冲流，也就是类名前缀带有 Buffer 的那些，比如说 BufferedInputStream、BufferedOutputStream、BufferedReader、BufferedWriter。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-04.png)
 
 
 缓冲流在内存中设置了一个缓冲区，只有缓冲区存储了足够多的带操作的数据后，才会和内存或者硬盘进行交互。简单来说，就是一次多读/写点，少读/写几次，这样程序的性能就会提高。
 
-**6）打印**
+### **6）打印**
 
 恐怕 Java 程序员一生当中最常用的就是打印流了：`System.out` 其实返回的就是一个 PrintStream 对象，可以用来打印各式各样的对象。
 
@@ -280,7 +333,7 @@ try (PrintWriter pw = new PrintWriter(buffer)) {
 System.out.println(buffer.toString());
 ```
 
-**7）对象序列化/反序列化**
+### **7）对象序列化/反序列化**
 
 序列化本质上是将一个 Java 对象转成字节数组，然后可以将其保存到文件中，或者通过网络传输到远程。
 
@@ -302,7 +355,7 @@ try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(
 ```
 
 
-**8）转换**
+### **8）转换**
 
 InputStreamReader 是从字节流到字符流的桥连接，它使用指定的字符集读取字节并将它们解码为字符。
 
@@ -330,8 +383,12 @@ out.close() ;
 
 ---------
 
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 
 
 

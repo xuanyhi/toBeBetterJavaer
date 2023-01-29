@@ -1,13 +1,18 @@
 ---
+title: Java 方法重写 Override 和方法重载 Overload 的区别，一下子就明白了
+shortTitle: Java 方法重写和方法重载的区别
+description: Java程序员进阶之路，小白的零基础Java教程，Java 中方法重写 Override 和方法重载 Overload 的区别
 category:
-  - Java核心
+  - Java 核心
 tag:
-  - Java
+  - 面向对象编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,方法重写,方法重载,Override,Overload
 ---
 
-# Java重写(Override)与重载(Overload)
-
-### 01、开篇
+## 01、开篇
 
 入冬的夜，总是来得特别的早。我静静地站在阳台，目光所及之处，不过是若隐若现的钢筋混凝土，还有那毫无情调的灯光。
 
@@ -27,9 +32,9 @@ tag:
 
 话音刚落，我就在 IDEA 中噼里啪啦地敲了起来。两段代码，分别是方法重写和方法重载。然后，把这两段代码截图到 draw.io（一个很漂亮的在线画图网站）上，加了一些文字说明。最后，打开 Photoscape X，把两张图片合并到了一起。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-01.png)
 
-### 02、方法重载
+## 02、方法重载
 
 “三妹，你仔细听哦。”我缓了一口气后继续说道。
 
@@ -101,7 +106,7 @@ class Adder {
 
 “编译时报错优于运行时报错，所以当两个方法的名字相同，参数个数和类型也相同的时候，虽然返回值类型不同，但依然会提示方法已经被定义的错误。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-02.png)
 
 “你想啊，三妹。我们在调用一个方法的时候，可以指定返回值类型，也可以不指定。当不指定的时候，直接指定 `add(1, 2)` 的时候，编译器就不知道该调用返回 int 的 `add()` 方法还是返回 double 的 `add()` 方法，产生了歧义。”
 
@@ -139,7 +144,7 @@ String[] args
 
 “由于可以通过改变参数类型的方式实现方法重载，那么当传递的参数没有找到匹配的方法时，就会发生隐式的类型转换。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-03.png)
 
 “如上图所示，byte 可以向上转换为 short、int、long、float 和 double，short 可以向上转换为 int、long、float 和 double，char 可以向上转换为 int、long、float 和 double，依次类推。”
 
@@ -214,11 +219,11 @@ public class OverloadingTypePromotion2 {
 “二哥，我又想到一个问题。当有两个方法 `sum(long a, int b)` 和 `sum(int a, long b)`，参数个数相同，参数类型相同，只不过位置不同的时候，会发生什么呢？”
 
 “当通过 `obj.sum(20, 20)` 来调用 sum 方法的时候，编译器会提示错误。”
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/21-04.png)
 
 “不明确，编译器会很为难，究竟是把第一个 20 从 int 转成 long 呢，还是把第二个 20 从 int 转成 long，智障了！所以，不能写这样让编译器左右为难的代码。”
 
-### 03、方法重写
+## 03、方法重写
 
 “三妹，累吗？我们稍微休息一下吧。”我把眼镜摘下来，放到桌子上，闭上了眼睛，开始胡思乱想起来。
 
@@ -291,7 +296,7 @@ class Vehicle {
 
 “Bike 重写了 `run()` 方法，也就意味着，Bike 可以跑出自己的风格。”
 
-### 04、总结
+## 04、总结
 
 “好了，三妹，我来简单做个总结。”我瞥了一眼电脑右上角的时钟，离三妹离开的时间不到 10 分钟了。
 
@@ -311,4 +316,11 @@ class Vehicle {
 
 “记住了吧？三妹。带上口罩，拿好手机，咱准备出门吧。”今天限号，没法开车送三妹去学校了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

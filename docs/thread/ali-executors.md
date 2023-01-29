@@ -1,15 +1,22 @@
 ---
+title: 为什么阿里巴巴要禁用Executors创建线程池？
+shortTitle: 为什么禁用Executors创建线程池？
+description: 为什么阿里巴巴要禁用Executors创建线程池？
 category:
   - Java核心
 tag:
-  - Java
+  - Java并发编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,并发编程,多线程,Thread,Executors,线程池
 ---
 
 # 为什么阿里巴巴要禁用Executors创建线程池？
 
 看阿里巴巴开发手册并发编程这块有一条：**线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式**，今天我们来通过源码分析一下禁用的原因。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-1.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-1.png)
 
 
 
@@ -70,7 +77,7 @@ public ThreadPoolExecutor(int corePoolSize,
 线程池执行任务逻辑和线程池参数的关系。
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-2.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-2.png)
 
 
 执行逻辑说明：
@@ -181,7 +188,7 @@ public class TaskTest {
 在启动测试类之前先将 JVM 内存调整小一点，不然很容易将电脑跑出问题【别问我为什么知道，是铁憨憨没错了！！！】，在 idea 里：Run -> Edit Configurations。
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-3.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-3.png)
 
 
 JVM 参数说明：
@@ -241,4 +248,10 @@ CPU 数量 * CPU 利用率 * (1 + 线程等待时间/线程 CPU 时间)
 > 转载链接：https://mp.weixin.qq.com/s/dd_IPt7lQQeIMH7YTdgLIw
 > 原文链接：https://juejin.cn/post/6844903989675458574
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

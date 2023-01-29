@@ -1,11 +1,19 @@
 ---
+title: Java HashMap详解（附源码分析）
+shortTitle: HashMap详解
 category:
   - Java核心
 tag:
-  - Java
+  - 集合框架（容器）
+description: Java程序员进阶之路，小白的零基础Java教程，Java HashMap详解
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,HashMap
 ---
 
-# Java8系列之重新认识HashMap
+这篇文章将通过源码的方式，详细透彻地讲清楚 Java 的 HashMap，包括HashMap hash 方法的原理、HashMap 的扩容机制、HashMap的加载因子为什么是 0.75 而不是 0.6、0.8，以及 HashMap 为什么是线程不安全的，所有 HashMap 的常见面试题，都会在这一篇文章里讲明白。
+
 
 ## 一、hash 方法的原理
 
@@ -119,7 +127,7 @@ static final int hash(Object key) {
 
 看下面这个图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hash-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hash-01.png)
 
 某哈希值为 `11111111 11111111 11110000 1110 1010`，将它右移 16 位（h >>> 16），刚好是 `00000000 00000000 11111111 11111111`，再进行异或操作（h ^ (h >>> 16)），结果是 `11111111 11111111 00001111 00010101`
 
@@ -141,7 +149,7 @@ static final int hash(Object key) {
 
 ## 二、扩容机制
 
-大家都知道，数组一旦初始化后大小就无法改变了，所以就有了 [ArrayList](https://mp.weixin.qq.com/s/7puyi1PSbkFEIAz5zbNKxA)这种“动态数组”，可以自动扩容。
+大家都知道，数组一旦初始化后大小就无法改变了，所以就有了 [ArrayList](https://tobebetterjavaer.com/collection/arraylist.html)这种“动态数组”，可以自动扩容。
 
 HashMap 的底层用的也是数组。向 HashMap 里不停地添加元素，当数组无法装载更多元素时，就需要对数组进行扩容，以便装入更多的元素。
 
@@ -224,7 +232,7 @@ void transfer(Entry[] newTable, boolean rehash) {
 
 **在旧数组中同一个链表上的元素，通过重新计算索引位置后，有可能被放到了新数组的不同位置上**（仔细看下面的内容，会解释清楚这一点）。
 
-假设 hash 算法（[之前的章节有讲到](https://mp.weixin.qq.com/s/aS2dg4Dj1Efwujmv-6YTBg)，点击链接再温故一下）就是简单的用键的哈希值（一个 int 值）和数组大小取模（也就是 hashCode % table.length）。
+假设 hash 算法就是简单的用键的哈希值（一个 int 值）和数组大小取模（也就是 hashCode % table.length）。
 
 继续假设：
 
@@ -233,7 +241,7 @@ void transfer(Entry[] newTable, boolean rehash) {
 
 取模运算后，哈希冲突都到 table[1] 上了，因为余数为 1。那么扩容前的样子如下图所示。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-01.png)
 
 小数组的容量为 2， key 3、7、5 都在 table[1] 的链表上。
 
@@ -245,13 +253,13 @@ void transfer(Entry[] newTable, boolean rehash) {
 - key 7 取模（7%4）后是 3，放在 table[3] 上的链表头部。
 - key 5 取模（5%4）后是 1，放在 table[1] 上。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-02.png)
 
 按照我们的预期，扩容后的 7 仍然应该在 3 这条链表的后面，但实际上呢？ 7 跑到 3 这条链表的头部了。针对 JDK 7 中的这个情况，JDK 8 做了哪些优化呢？
 
 看下面这张图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-03.png)
 
 n 为 table 的长度，默认值为 16。
 
@@ -275,12 +283,12 @@ n 为 table 的长度，默认值为 16。
 - 扩容后的容量是 32
 - 扩容后的索引是 21（*1* 0101），也就是 5+16，也就是原来的索引+原来的容量
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-04.png)
 
 
 也就是说，JDK 8 不需要像 JDK 7 那样重新计算 hash，只需要看原来的hash值新增的那个bit是1还是0就好了，是0的话就表示索引没变，是1的话，索引就变成了“原索引+原来的容量”。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-05.png)
 
 JDK 8 的这个设计非常巧妙，既省去了重新计算hash的时间，同时，由于新增的1 bit是0还是1是随机的，因此扩容的过程，可以均匀地把之前的节点分散到新的位置上。
 
@@ -410,7 +418,7 @@ i = (n - 1) & hash
 
 我们知道，HashMap 是通过拉链法来解决哈希冲突的。
 
-为了减少哈希冲突发生的概率，当 HashMap 的数组长度达到一个**临界值**的时候，就会触发扩容（可以点击[链接](https://mp.weixin.qq.com/s/0KSpdBJMfXSVH63XadVdmw)查看 HashMap 的扩容机制），扩容后会将之前小数组中的元素转移到大数组中，这是一个相当耗时的操作。
+为了减少哈希冲突发生的概率，当 HashMap 的数组长度达到一个**临界值**的时候，就会触发扩容，扩容后会将之前小数组中的元素转移到大数组中，这是一个相当耗时的操作。
 
 这个临界值由什么来确定呢？
 
@@ -440,11 +448,11 @@ static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
 阮一峰老师曾在一篇博文中详细的介绍了泊松分布和指数分布，大家可以去看一下。
 
->链接：https://www.ruanyifeng.com/blog/2015/06/poisson-distribution.html
+>链接：[https://www.ruanyifeng.com/blog/2015/06/poisson-distribution.html](https://www.ruanyifeng.com/blog/2015/06/poisson-distribution.html)
 
 具体是用这么一个公式来表示的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-01.png)
 
 等号的左边，P 表示概率，N表示某种函数关系，t 表示时间，n 表示数量。
 
@@ -486,7 +494,7 @@ more: less than 1 in ten million
 
 为了搞清楚到底为什么，我看到了这篇文章：
 
->参考链接：https://segmentfault.com/a/1190000023308658
+>参考链接：[https://segmentfault.com/a/1190000023308658](https://segmentfault.com/a/1190000023308658)
 
 里面提到了一个概念：**二项分布**（二哥概率论没学好，只能简单说一说）。
 
@@ -504,38 +512,38 @@ more: less than 1 in ten million
 
 于是，n次事件里面，碰撞为0的概率，由上面公式得：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-02.png)
 
 这个概率值需要大于0.5，我们认为这样的hashmap可以提供很低的碰撞率。所以：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-03png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-03png)
 
 这时候，我们对于该公式其实最想求的时候长度s的时候，n为多少次就应该进行扩容了？而负载因子则是$n/s$的值。所以推导如下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-04.png)
 
 所以可以得到
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-05.png)
 
 其中
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-06.png)
 
 这就是一个求 `∞⋅0`函数极限问题，这里我们先令$s = m+1（m \to \infty）$则转化为
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-07.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-07.png)
 
 我们再令 $x = \frac{1}{m} （x \to 0）$ 则有，
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-08.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-08.png)
 
 所以，
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-09.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-09.png)
 
 
-考虑到 HashMap的容量有一个要求：它必须是2的n 次幂（这个[之前的文章](https://mp.weixin.qq.com/s/aS2dg4Dj1Efwujmv-6YTBg)讲过了，点击链接回去可以再温故一下）。当加载因子选择了0.75就可以保证它与容量的乘积为整数。
+考虑到 HashMap的容量有一个要求：它必须是2的n 次幂。当加载因子选择了0.75就可以保证它与容量的乘积为整数。
 
 ```
 16*0.75=12
@@ -618,33 +626,33 @@ void transfer(Entry[] newTable, boolean rehash) {
 
 扩容前的样子假如是下面这样子。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-01.png)
 
 那么正常扩容后就是下面这样子。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-02.png)
 
 假设现在有两个线程同时进行扩容，线程 A 在执行到 `newTable[i] = e;` 被挂起，此时线程 A 中：e=3、next=7、e.next=null
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-03.png)
 
 
 线程 B 开始执行，并且完成了数据转移。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-04.png)
 
 
 此时，7 的 next 为 3，3 的 next 为 null。
 
 随后线程A获得CPU时间片继续执行 `newTable[i] = e`，将3放入新数组对应的位置，执行完此轮循环后线程A的情况如下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-05.png)
 
 执行下一轮循环，此时 e=7，原本线程 A 中 7 的 next 为 5，但由于 table 是线程 A 和线程 B 共享的，而线程 B 顺利执行完后，7 的 next 变成了 3，那么此时线程 A 中，7 的 next 也为 3 了。
 
 采用头部插入的方式，变成了下面这样子：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-06.png)
 
 好像也没什么问题，此时 next = 3，e = 3。
 
@@ -652,17 +660,17 @@ void transfer(Entry[] newTable, boolean rehash) {
 
 接下来当执行完 `e.next=newTable[i]` 即 3.next=7 后，3 和 7 之间就相互链接了，执行完 `newTable[i]=e` 后，3 被头插法重新插入到链表中，执行结果如下图所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-07.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-07.png)
 
 套娃开始，元素 5 也就成了弃婴，惨~~~
 
-不过，JDK 8 时已经修复了这个问题，扩容时会保持链表原来的顺序，参照[HashMap 扩容机制](https://mp.weixin.qq.com/s/0KSpdBJMfXSVH63XadVdmw)的这一篇。
+不过，JDK 8 时已经修复了这个问题，扩容时会保持链表原来的顺序。
 
 ### 02、多线程下 put 会导致元素丢失
 
 正常情况下，当发生哈希冲突时，HashMap 是这样的：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-08.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-08.png)
 
 但多线程同时执行 put 操作时，如果计算出来的索引位置是相同的，那会造成前一个 key 被后一个 key 覆盖，从而导致元素的丢失。
 
@@ -740,11 +748,11 @@ if ((p = tab[i = (n - 1) & hash]) == null)
 
 两个线程都执行了 if 语句，假设线程 A 先执行了 ` tab[i] = newNode(hash, key, value, null)`，那 table 是这样的：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-09.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-09.png)
 
 接着，线程 B 执行了 ` tab[i] = newNode(hash, key, value, null)`，那 table 是这样的：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-10.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-10.png)
 
 3 被干掉了。
 
@@ -794,9 +802,15 @@ final Node<K,V>[] resize() {
 
 参考链接：
 
-> - https://blog.csdn.net/lonyw/article/details/80519652
-> - https://zhuanlan.zhihu.com/p/91636401 
-> - https://www.zhihu.com/question/20733617
-> - https://zhuanlan.zhihu.com/p/21673805
+> - [https://blog.csdn.net/lonyw/article/details/80519652](https://blog.csdn.net/lonyw/article/details/80519652)
+> - [https://zhuanlan.zhihu.com/p/91636401](https://zhuanlan.zhihu.com/p/91636401)
+> - [https://www.zhihu.com/question/20733617](https://www.zhihu.com/question/20733617)
+> - [https://zhuanlan.zhihu.com/p/21673805](https://zhuanlan.zhihu.com/p/21673805)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

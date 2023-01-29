@@ -1,18 +1,22 @@
 ---
+title: 怎么理解Java中的类和对象？
+shortTitle: 怎么理解Java中的类和对象？
 category:
   - Java核心
 tag:
-  - Java
+  - 面向对象编程
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，怎么理解Java中的类和对象？
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,类和对象,class,object
 ---
 
-# 怎么理解Java中类和对象的概念？
-
-
-“二哥，我那天在图书馆复习[上一节](https://mp.weixin.qq.com/s/WzMEOEdzI0fFwBQ4s0S-0g)你讲的内容，刚好碰见一个学长，他问我有没有‘对象’，我说还没有啊。结果你猜他说什么，‘要不要我给你 new 一个啊？’我当时就懵了，new 是啥意思啊，二哥？”三妹满是疑惑的问我。
+“二哥，我那天在图书馆复习《Java 程序员进阶之路》的时候，刚好碰见一个学长，他问我有没有‘对象’，我说还没有啊。结果你猜他说什么，‘要不要我给你 new 一个啊？’我当时就懵了，new 是啥意思啊，二哥？”三妹满是疑惑的问我。
 
 “哈哈，三妹，你学长还挺幽默啊。new 是 Java 中的一个关键字，用来把类变成对象。”我笑着对三妹说，“对象和类是 Java 中最基本的两个概念，可以说撑起了面向对象编程（OOP）的一片天。”
 
-### 01、面向过程和面向对象
+## 01、面向过程和面向对象
 
 三妹是不是要问，什么是 OOP？
 
@@ -38,7 +42,7 @@ OOP 的英文全称是 Object Oriented Programming，要理解它的话，就要
 
 不过，如果追到底的话，面向对象的底层其实还是面向过程，只不过把面向过程进行了抽象化，封装成了类，方便我们的调用。
 
-### 02、类
+## 02、类
 
 对象可以是现实中看得见的任何物体，比如说，一只特立独行的猪；也可以是想象中的任何虚拟物体，比如说能七十二变的孙悟空。
 
@@ -114,7 +118,7 @@ public class Person {
 
 `public Person(){}` 就是默认的构造方法，因为是空的构造方法（方法体中没有内容），所以可以缺省。Java 聪明就聪明在这，有些很死板的代码不需要开发人员添加，它会偷偷地做了。
 
-### 03、new 一个对象
+## 03、new 一个对象
 
 创建 Java 对象时，需要用到 `new` 关键字。
 
@@ -157,7 +161,7 @@ null
 
 第二种：`main()` 方法不在 Person 类中，而在另外一个类中。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/16-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/16-01.png)
 
 实际开发中，我们通常不在当前类中直接创建对象并使用它，而是放在使用对象的类中，比如说上图中的 PersonTest 类。
 
@@ -184,7 +188,7 @@ class Person {
 }
 ```
 
-### 04、初始化对象
+## 04、初始化对象
 
 在之前的例子中，程序输出结果为：
 
@@ -221,7 +225,7 @@ public class Person {
 
 person 被称为对象 Person 的引用变量，见下图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/16-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/16-02.png)
 
 通过对象的引用变量，可以直接对字段进行初始化（`person.name = "沉默王二"`），所以以上代码输出结果如下所示：
 
@@ -302,7 +306,7 @@ new Person();
 new Person().initialize("沉默王二", 18, 1);
 ```
 
-### 05、关于对象
+## 05、关于对象
 
 **1）抽象的历程**
 
@@ -424,6 +428,9 @@ public class Test {
 
 ----
 
-更多 Java 对象和类的知识，请移步下一篇。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

@@ -1,15 +1,21 @@
 ---
+title: Java如何判断两个字符串是否相等？
+shortTitle: 如何判断两个字符串是否相等？
 category:
   - Java核心
 tag:
-  - Java
+  - 数组&字符串
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，Java如何判断两个字符串是否相等？
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java字符串,String,equals
 ---
 
-# Java判断两个字符串是否相等？
 
-“哥，如何比较两个字符串相等啊？”三妹问。
+“二哥，如何比较两个字符串相等啊？”三妹问。
 
-“这个问题看似简单，却在 Stack Overflow 上有超过 370 万的访问量。”我说，“这个问题也可以引申为 `.equals()` 和 ‘==’ 操作符有什么区别。”
+“这个问题看似简单，却在 Stack Overflow 上有超过 370 万+的访问量。”我说，“这个问题也可以引申为 `.equals()` 和 ‘==’ 操作符有什么区别。”
 
 - “==”操作符用于比较两个对象的地址是否相等。
 - `.equals()` 方法用于比较两个对象的内容是否相等。
@@ -20,7 +26,7 @@ tag:
 
 有一对双胞胎，姐姐叫阿丽塔，妹妹叫洛丽塔。我们普通人可能完全无法分辨谁是姐姐谁是妹妹，可她们的妈妈却可以轻而易举地辨认出。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/equals-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/equals-01.png)
 
 
 `.equals()` 就好像我们普通人，看见阿丽塔以为是洛丽塔，看见洛丽塔以为是阿丽塔，看起来一样就觉得她们是同一个人；“==”操作符就好像她们的妈妈，要求更严格，观察更细致，一眼就能分辨出谁是姐姐谁是妹妹。
@@ -86,7 +92,7 @@ public static boolean equals(byte[] value, byte[] other) {
 }
 ```
 
-我的 JDK 版本是 Java 11，也就是最新的 LTS（长期支持）版本。该版本中，String 类使用字节数组实现的，所以比较两个字符串的内容是否相等时，可以先比较字节数组的长度是否相等，不相等就直接返回 false；否则就遍历两个字符串的字节数组，只有有一个字节不相等，就返回 false。
+我的 JDK 版本是 Java 17，也就是最新的 LTS（长期支持）版本。该版本中，String 类使用字节数组实现的，所以比较两个字符串的内容是否相等时，可以先比较字节数组的长度是否相等，不相等就直接返回 false；否则就遍历两个字符串的字节数组，只有有一个字节不相等，就返回 false。
 
 “嗯，二哥，这段源码不难理解。”三妹自信地说。
 
@@ -216,4 +222,10 @@ public boolean contentEquals(CharSequence cs) {
 
 “是的，总体上感觉还是 `Objects.equals()` 比较舒服。”三妹的眼睛是雪亮的，发现了这个方法的优点。
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+---
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

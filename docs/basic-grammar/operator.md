@@ -1,17 +1,24 @@
 ---
+title: Java 运算符
+shortTitle: Java 运算符
 category:
   - Java核心
 tag:
-  - Java
+  - Java语法基础
+description: Java程序员进阶之路，小白的零基础Java教程，本文主要介绍Java 中的运算符(算术运算符、关系运算符、赋值运算符、逻辑运算符、位运算符)的使用
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,运算符,java运算符
 ---
 
-# Java运算符
+## 3.6 Java运算符
 
 “二哥，让我盲猜一下哈，运算符是不是指的就是加减乘除啊？”三妹的脸上泛着甜甜的笑容，我想她一定对提出的问题很有自信。
 
 “是的，三妹。运算符在 Java 中占据着重要的位置，对程序的执行有着很大的帮助。除了常见的加减乘除，还有许多其他类型的运算符，来看下面这张思维导图。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-01.png)
 
 
 ### 01、算数运算符
@@ -45,7 +52,7 @@ public class ArithmeticOperator {
 
 对于初学者来说，加法（+）、减法（-）、乘法（*）很好理解，但除法（/）和取余（%）会有一点点疑惑。在以往的认知里，10/3 是除不尽的，结果应该是 3.333333...，而不应该是 3。相应的，余数也不应该是 1。这是为什么呢？
 
-因为数字在程序中可以分为两种，一种是整型，一种是浮点型（不清楚的同学可以回头看看[数据类型那篇](https://mp.weixin.qq.com/s/twim3w_dp5ctCigjLGIbFw)），整型和整型的运算结果就是整型，不会出现浮点型。否则，就会出现浮点型。
+因为数字在程序中可以分为两种，一种是整型，一种是浮点型（不清楚的同学可以回头看看[数据类型那篇](https://tobebetterjavaer.com/basic-grammar/basic-data-type.html)），整型和整型的运算结果就是整型，不会出现浮点型。否则，就会出现浮点型。
 
 ```java
 /**
@@ -118,7 +125,7 @@ System.out.println(y + " " + x);// 10 11
 
 关系运算符用来比较两个操作数，返回结果为 true 或者 false。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-02.png)
 
 来看示例：
 
@@ -159,7 +166,7 @@ public class BitOperator {
 
 PS：现代的二进制记数系统由戈特弗里德·威廉·莱布尼茨于 1679 年设计。莱布尼茨是德意志哲学家、数学家，历史上少见的通才。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-03.png)
 
 来看示例：
 
@@ -298,7 +305,7 @@ public class AssignmentOperator {
 
 不过在进行数值的赋值时，需要小点心，比如说下面这种情况：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-04.png)
 
 编译器之所以提示错误，是因为 = 右侧的算术表达式默认为 int 类型，左侧是 short 类型的时候需要进行强转。
 
@@ -376,4 +383,11 @@ public class TernaryOperator {
 
 “差不多，二哥，我需要写点 demo 练习会。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
+---
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

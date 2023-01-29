@@ -1,25 +1,26 @@
 ---
+title: 1小时彻底掌握 Git，（可能是）史上最简单明了的 Git 教程
+shortTitle: 最简单明了的 Git 教程
 category:
-  - Java企业级开发
+  - 开发/构建工具
 tag:
   - Git
-shortTitle: Git
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，1小时彻底掌握 Git，（可能是）史上最简单明了的 Git 教程
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Git入门,Git教程,git
 ---
 
-# 我在工作中是如何使用 Git 的
+# 1小时彻底掌握 Git，（可能是）史上最简单明了的 Git 教程
 
 
 ## 一、Git 起源
 
 Git 是一个分布式版本控制系统，缔造者是大名鼎鼎的林纳斯·托瓦茲 (Linus Torvalds)，Git 最初的目的是为了能更好的管理 Linux 内核源码。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-01.png)
 
-PS：**为了能够帮助更多的 Java 爱好者，已将《Java 程序员进阶之路》开源到了 GitHub（本篇已收录）。如果你也喜欢这个专栏，觉得有帮助的话，可以去点个 star，这样也方便以后进行更系统化的学习**：
-
-[https://github.com/itwanger/toBeBetterJavaer](https://github.com/itwanger/toBeBetterJavaer)
-
-*每天看着 star 数的上涨我心里非常的开心，希望越来越多的 Java 爱好者能因为这个开源项目而受益，而越来越多人的 star，也会激励我继续更新下去*~
 
 大家都知道，Linux 内核是开源的，参与者众多，到目前为止，共有两万多名开发者给 Linux Kernel 提交过代码。
 
@@ -55,7 +56,7 @@ Junio Hamano 觉得 Linus 设计的这些命令对于普通用户不太友好，
 
 如今，Git 已经成为全球软件开发者的标配。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-02.png)
 
 原本的 Git 只适用于 Unix/Linux 平台，但随着 Cygwin、msysGit 环境的成熟，以及 TortoiseGit 这样易用的GUI工具，Git 在 Windows 平台下也逐渐成熟。
 
@@ -66,7 +67,7 @@ Junio Hamano 觉得 Linus 设计的这些命令对于普通用户不太友好，
 Git 和传统的版本控制工具 CVS、SVN 有不小的区别，前者关心的是文件的整体性是否发生了改变，后两者更关心文件内容上的差异。
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-03.png)
 
 
 除此之外，Git 更像是一个文件系统，每个使用它的主机都可以作为版本库，并且不依赖于远程仓库而离线工作。开发者在本地就有历史版本的副本，因此就不用再被远程仓库的网络传输而束缚。
@@ -89,7 +90,7 @@ Git 中的绝大多数操作都只需要访问本地文件和资源，一般不�
 
 Git 的工作流程是这样的：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-04.png)
 
 
 - 在工作目录中修改文件
@@ -103,11 +104,11 @@ Git 的工作流程是这样的：
 >https://git-scm.com/downloads
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-05.png)
 
 我个人使用的 macOS 系统，可以直接使用 `brew install git` 命令安装，非常方便。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-06.png)
 
 安装成功后，再使用 `git --version` 就可以查看版本号了，我本机上安装的是 2.23.0 版本。
 
@@ -288,7 +289,7 @@ TREE: 目录树对象。在 Linus 的设计里，TREE 对象就是一个时间�
 
 另外，由于 TREE 上记录文件名及属性信息，对于修改文件属性或修改文件名、移动目录而不修改文件内容的情况，可以复用 BLOB 对象，节省存储资源。而 Git 在后来的开发演进中又优化了 TREE 的设计，变成了某一时间点文件夹信息的抽象，TREE 包含其子目录的 TREE 的对象信息（SHA1）。这样，对于目录结构很复杂或层级较深的 Git 库 可以节约存储资源。历史信息被记录在第三种对象 CHANGESET 里。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/neibushixian-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/neibushixian-01.png)
 
 CHANGESET：即 Commit 对象。一个 CHANGESET 对象中记录了该次提交的 TREE 对象信息（SHA1），以及提交者(committer)、提交备注(commit message)等信息。
 
@@ -305,7 +306,7 @@ Linus 解释了“当前目录缓存”的设计，该缓存就是一个二进�
 - 1. 能够快速的复原缓存的完整内容，即使不小心把当前工作区的文件删除了，也可以从缓存中恢复所有文件；
 - 2. 能够快速找出缓存中和当前工作区内容不一致的文件。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/neibushixian-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/neibushixian-02.png)
 
 Linus 在 Git 的第一次代码提交里便完成了 Git 的最基础功能，并可以编译使用。代码极为简洁，加上 Makefile 一共只有 848 行。感兴趣的话可以通过上一段所述方法 checkout Git 最早的 commit 上手编译玩玩，只要有 Linux 环境即可。
 
@@ -333,7 +334,7 @@ Linus 在 Git 的第一次代码提交里便完成了 Git 的最基础功能，�
 
 一般来说，日常使用只要记住下图中这 6 个命令就可以了，但是熟练使用 Git，恐怕要记住60～100个命令~
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/mingling-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/mingling-01.png)
 
 
 
@@ -348,7 +349,7 @@ Linus 在 Git 的第一次代码提交里便完成了 Git 的最基础功能，�
 
 下面是阮一峰老师整理的常用 Git 命令清单，有必要的话，可以打印一份出来，放在工作台~
 
->http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html
+>[http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
 
 ### 1、新建代码库
 
@@ -642,7 +643,7 @@ $ git archive
 
 但是，太方便了也会产生副作用。如果你不加注意，很可能会留下一个枝节蔓生、四处开放的版本库，到处都是分支，完全看不出主干发展的脉络。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-01.png)
 
 
 那有没有一个好的分支策略呢？答案当然是有的。
@@ -651,7 +652,7 @@ $ git archive
 
 首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-02.png)
 
 Git主分支的名字，默认叫做Master。它是自动建立的，版本库初始化以后，默认就是在主分支在进行开发。
 
@@ -659,7 +660,7 @@ Git主分支的名字，默认叫做Master。它是自动建立的，版本库�
 
 主分支只用来发布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做Develop。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-03.png)
 
 这个分支可以用来生成代码的最新隔夜版本（nightly）。如果想正式对外发布，就在Master分支上，对Develop分支进行"合并"（merge）。
 
@@ -681,11 +682,11 @@ Git创建Develop分支的命令：
 
 这里稍微解释一下上一条命令的--no-ff参数是什么意思。默认情况下，Git执行"快进式合并"（fast-farward merge），会直接将Master分支指向Develop分支。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-04.png)
 
 使用--no-ff参数后，会执行正常合并，在Master分支上生成一个新节点。为了保证版本演进的清晰，我们希望采用这种做法。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-05.png)
 
 ### 3、临时性分支
 
@@ -703,7 +704,7 @@ Git创建Develop分支的命令：
 
 **第一种是功能分支**，它是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要再并入Develop。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-06.png)
 
 功能分支的名字，可以采用feature-*的形式命名。
 
@@ -756,7 +757,7 @@ Git创建Develop分支的命令：
 
 修补bug分支是从Master分支上面分出来的。修补结束以后，再合并进Master和Develop分支。它的命名，可以采用fixbug-*的形式。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-07.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-07.png)
 
 创建一个修补bug分支：
 ```
@@ -792,7 +793,7 @@ Git创建Develop分支的命令：
 
 新建一个文件夹，比如说 testgit，然后使用 `git init` 命令就可以把这个文件夹初始化为 Git 仓库了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-01.png)
 
 
 初始化Git 仓库成功后，可以看到多了一个 .git 的目录，没事不要乱动，免得破坏了 Git 仓库的结构。
@@ -803,17 +804,17 @@ Git创建Develop分支的命令：
 
 第二步，使用 `git commit` 命令告诉 Git，把文件提交到仓库。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-02.png)
 
 可以使用 `git status` 来查看是否还有文件未提交。
 
 也可以在文件中新增一行内容“传统美德不能丢，记得点赞哦~”，再使用 `git status` 来查看结果。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-03.png)
 
 如果想查看文件到底哪里做了修改，可以使用 `git diff` 命令：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-04.png)
 
 确认修改的内容后，可以使用 `git add` 和 `git commit` 再次提交。
 
@@ -823,11 +824,11 @@ Git创建Develop分支的命令：
 
 现在我已经对 readme.txt 文件做了三次修改了。可以通过 `git log` 命令来查看历史记录：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-05.png)
 
 也可以通过 `gitk` 这个命令来启动图形化界面来查看版本历史。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-06.png)
 
 
 如果想回滚的话，比如说回滚到上一个版本，可以执行以下两种命令：
@@ -836,15 +837,15 @@ Git创建Develop分支的命令：
 
 2）`git reset --hard HEAD~100`，如果回滚到前 100 个版本，用这个命令比上一个命令更方便。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-07.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-07.png)
 
 那假如回滚错了，想恢复，不记得版本号了，可以先执行 `git reflog` 命令查看版本号：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-08.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-08.png)
 
 然后再通过 `git reset --hard` 命令来恢复：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-09.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-09.png)
 
 ### 3、工作区和暂存区的区别
 
@@ -866,7 +867,7 @@ Git 在提交文件的时候分两步，第一步 `git add` 命令是把文件�
 
 原子性带来的好处是显而易见的，这使得我们可以把项目整体还原到某个时间点，就这一点，SVN 就完虐 CVS 这些代码版本管理系统了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-10.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-10.png)
 
 Git 作为逼格最高的代码版本管理系统，自然要借鉴 SVN 这个优良特性的。但不同于 SVN 的是，Git 一开始搞的都是命令行，没有图形化界面，如果想要像 SVN 那样一次性选择多个文件或者不选某些文件（见上图），还真特喵的是个麻烦事。
 
@@ -882,7 +883,7 @@ Git 作为逼格最高的代码版本管理系统，自然要借鉴 SVN 这个�
 
 我们先用 `git status` 命令查看一下状态，再用 `git add` 将文件添加到暂存区，最后再用 `git commit` 一次性提交到 Git 仓库。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-11.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-11.png)
 
 ### 4、撤销修改
 
@@ -896,17 +897,17 @@ Git 作为逼格最高的代码版本管理系统，自然要借鉴 SVN 这个�
 
 答案当然是有了，其实在我们执行 `git status` 命令查看 Git 状态的时候，结果就提示我们可以使用 `git restore` 命令来撤销这次操作的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-12.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-12.png)
 
 那其实在 git version 2.23.0 版本之前，是可以通过 `git checkout` 命令来完成撤销操作的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-13.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-13.png)
 
 checkout 可以创建分支、导出分支、切换分支、从暂存区删除文件等等，一个命令有太多功能就容易让人产生混淆。2.23.0 版本改变了这种混乱局面，git switch 和 git restore 两个新的命令应运而生。
 
 switch 专注于分支的切换，restore 专注于撤销修改。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-14.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-14.png)
 
 ### 5、远程仓库
 
@@ -924,7 +925,7 @@ Git 是一款分布式版本控制系统，所以同一个 Git 仓库，可以�
 
 **第一步，通过 `ls -al ~/.ssh` 命令检查 SSH 密钥是否存在**
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-15.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-15.png)
 
 如果没有 id_rsa.pub、id_ecdsa.pub、id_ed25519.pub 这 3 个文件，表示密钥不存在。
 
@@ -933,26 +934,26 @@ Git 是一款分布式版本控制系统，所以同一个 Git 仓库，可以�
 执行以下命令，注意替换成你的邮箱：
 
 ```
-ssh-keygen -t ed25519 -C "your_email@example.com
+ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
 然后一路回车：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-16.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-16.png)
 
 记得复制一下密钥，在 id_ed25519.pub 文件中：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-17.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-17.png)
 
 **第三步，添加 SSH 密钥到 GitHub 帐户**
 
 在个人账户的 settings 菜单下找到 SSH and GPG keys，将刚刚复制的密钥添加到 key 这一栏中，点击「add SSH key」提交。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-18.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-18.png)
 
 Title 可不填写，提交成功后会列出对应的密钥：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-19.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-19.png)
 
 **为什么 GitHub 需要 SSH 密钥呢**？
 
@@ -962,17 +963,17 @@ Title 可不填写，提交成功后会列出对应的密钥：
 
 点击新建仓库，填写仓库名称等信息：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-20.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-20.png)
 
 **第五步，把本地仓库同步到 GitHub**
 
 复制远程仓库的地址：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-21.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-21.png)
 
 在本地仓库中执行 `git remote add` 命令将 GitHub 仓库添加到本地：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-22.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-22.png)
 
 当我们第一次使用Git 的 push 命令连接 GitHub 时，会得到一个警告⚠️：
 
@@ -986,28 +987,28 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 接下来，我们使用 `git push` 命令将当前本地分支推送到 GitHub。加上了 -u 参数后，Git 不但会把本地的 master 分支推送的远程 master 分支上，还会把本地的 master 分支和远程的master 分支关联起来，在以后的推送或者拉取时就可以简化命令（比如说 `git push github master`）。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-23.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-23.png)
 
 此时，我们刷一下 GitHub，可以看到多了一个 master 分支，并且本地的两个文件都推送成功了！
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-24.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-24.png)
 
 从现在开始，只要本地做了修改，就可以通过 `git push` 命令推送到 GitHub 远程仓库了。
 
 还可以使用 `git clone` 命令将远程仓库拷贝到本地。比如说我现在有一个 3.4k star 的仓库 JavaBooks，
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-25.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-25.png)
 
 然后我使用 `git clone` 命令将其拷贝到本地。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-26.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-26.png)
 
 
 ## 八、详解 sparse-checkout 命令
 
 前天不是搭建了一个《Java 程序员进阶之路》的网站嘛，其中用到了 Git 来作为云服务器和 GitHub 远程仓库之间的同步工具。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-01.png)
 
 
 
@@ -1020,7 +1021,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 首先给大家通报一下，一天前[上线的《Java 程序员进阶之路》网站](https://tobebetterjavaer.com)，目前访问次数已经突破 1000 了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-03.png)
 
 
 正所谓**不积跬步无以至千里，不积小流无以成江海**。
@@ -1035,7 +1036,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 大家可以先看一下我这个 GitHub 仓库的目录结构哈。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-04.png)
 
 - docs 是文档目录，里面是 md 文件，所有的教程原稿都在这里。
 - codes 是代码目录，里面是教程的配套源码。
@@ -1043,11 +1044,11 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 这样就可以利用 GitHub 来做免费的图床，并且还可以白票  jsDelivr CDN 的全球加速，简直不要太爽！
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-05.png)
 
 比如说 images 目录下有一张 logo 图 logo-01.png：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-06.png)
 
 如果使用 GitHub 仓库的原始路径来访问的话，速度贼慢！
 
@@ -1055,7 +1056,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 使用 jsDelivr 加速后就不一样了，速度飞起！
 
->http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/logo-01.png
+>https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/logo-01.png
 
 简单总结下 GitHub 作为图床的正确用法，就两条：
 
@@ -1075,16 +1076,16 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 最后还是浏览 Git 官方手册（也可以看[Pro Git](https://mp.weixin.qq.com/s/RpFzXOa2VlFNd7ylLmr9LQ)）才找到了一个牛逼的命令：**git sparse-checkout，它可以帮助我们在拉取远程仓库的时候只同步那些我们想要的目录和文件**。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-07.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-07.png)
 具体怎么用，可以看官方文档：
 
->https://git-scm.com/docs/git-sparse-checkout
+>[https://git-scm.com/docs/git-sparse-checkout](https://git-scm.com/docs/git-sparse-checkout)
 
 但没必要，hhhh，我们直接实战。
 
 第一步，通过 `git remote add -f orgin git@github.com:itwanger/toBeBetterJavaer.git` 命令从 GitHub 上拉取仓库。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-08.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-08.png)
 
 第二步，启用 sparse-checkout，并初始化
 
@@ -1092,30 +1093,30 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 然后再执行 `git sparse-checkout init` 初始化。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-09.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-09.png)
 
 第三步，使用 sparse-checkout 来拉取我们想要的仓库目录
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-10.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-10.png)
 
 比如说，我们只想拉取 docs 目录，可以执行 `git sparse-checkout set docs` 命令。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-11.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-11.png)
 
 如果是第一次使用 sparse-checkout 的话，还需要执行一下 `git pull orgin master` 命令拉取一次。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-12.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-12.png)
 第四步，验证是否生效
 
 可以执行 `ls -al` 命令来确认 sparse-checkout 是否生效。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-13.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-13.png)
 
 如图所示，确实只拉取到了 docs 目录。
 
 假如还想要拉取其他文件或者目录的话，可以通过 `git sparse-checkout add` 命令来添加。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-14.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-14.png)
 
 这就实现了，**远程仓库和云服务器仓库之间的定制化同步，需要什么目录和文件就同步什么目录和文件，不需要的可以统统不要**。
 
@@ -1123,13 +1124,13 @@ GitHub 仓库可以免费用，空间也无限大，但云服务可是要抠抠�
 
 我对比了一下，远程仓库大概 145 M，图片就占了 72 M，妥妥地省下了一半的存储空间。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-15.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-15.png)
 
 如何禁用 git sparse-checkout 呢？
 
 也简单，只需要执行一下 `git sparse-checkout disable` 命令就可以了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-16.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-16.png)
 
 可以看到，那些我们不想要的目录和文件统统都又回来了。
 
@@ -1137,7 +1138,7 @@ GitHub 仓库可以免费用，空间也无限大，但云服务可是要抠抠�
 
 也简单，只需要执行一下 `git sparse-checkout reapply` 命令就可以了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-17.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-17.png)
 
 简单总结下：如果你要把一个庞大到撑满你硬盘的远程仓库拉取到本地，而你只需要其中的一部分目录和文件，那就可以试一试
  `git sparse-checkout` 了。
@@ -1148,7 +1149,7 @@ GitHub 仓库可以免费用，空间也无限大，但云服务可是要抠抠�
 
 不得不说，Git 实在是太强大了。就一行命令，解决了困扰我一天的烦恼，我的 80G 存储空间的云服务器又可以再战 3 年了，从此以后再也不用担心了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-18.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-18.png)
 
 Git 是真的牛逼，Linus 是真的牛逼，神不愧是神！
 
@@ -1162,9 +1163,15 @@ Git 是真的牛逼，Linus 是真的牛逼，神不愧是神！
 
 参考资料：
 
->- 维基百科：https://zh.wikipedia.org/wiki/Git
+>- 维基百科：[https://zh.wikipedia.org/wiki/Git](https://zh.wikipedia.org/wiki/Git)
 >- hutusi：[改变世界的一次代码提交](https://mp.weixin.qq.com/s/gM__sQPILkAKWsMejOO8cA)
 
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 

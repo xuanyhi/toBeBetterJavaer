@@ -1,10 +1,15 @@
 ---
 title: 吊打Java并发面试官之ConcurrentHashMap
+shortTitle: ConcurrentHashMap
+description: 吊打Java并发面试官之ConcurrentHashMap
 category:
   - Java核心
-  - 并发编程
 tag:
-  - Java
+  - Java并发编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,并发编程,多线程,Thread,ConcurrentHashMap
 ---
 
 在使用HashMap时，在多线程情况下扩容会出现CPU接近100%的情况，因为hashmap并不是线程安全的，通常我们可以使用在java体系中古老的hashtable类，该类基本上所有的方法都采用synchronized进行线程安全的控制，可想而知，在高并发的情况下，每次只有一个线程能够获取对象监视器锁，这样的并发性能的确不令人满意。
@@ -360,7 +365,7 @@ put方法的代码量有点长，我们按照上面的分解的步骤一步步�
 
 在之前了解过HashMap以及1.8版本之前的ConcurrenHashMap都应该知道ConcurrentHashMap结构图，为了方面下面的讲解这里先直接给出，如果对这有疑问的话，可以在网上随便搜搜即可。
 
-![ConcurrentHashMap散列桶数组结构示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentHashMap-01.png)
+![ConcurrentHashMap散列桶数组结构示意图](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentHashMap-01.png)
 
 如图（图片摘自网络），ConcurrentHashMap是一个哈希桶数组，如果不出现哈希冲突的时候，每个元素均匀的分布在哈希桶数组中。当出现哈希冲突的时候，是**标准的链地址的解决方式**，将hash值相同的节点构成链表的形式，称为“拉链法”，另外，在1.8版本中为了防止拉链过长，当链表的长度大于8的时候会将链表转换成红黑树。
 
@@ -586,7 +591,7 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
                 if (tabAt(tab, i) == f) {
                     Node<K,V> ln, hn;
                     if (fh >= 0) {
-						//4.3 处理当前节点为链表的头结点的情况，构造两个链表，一个是原链表  另一个是原链表的反序排列
+						//4.3 处理当前节点为链表的头结点的情况，根据最高位为1还是为0(最高位指数组长度位)，将原链表拆分为两个链表，分别放到新数组的i位置和i+n位置。这里还通过巧妙的处理措施，使得原链表中的一部分能直接平移到新链表(即lastRun及其后面跟着的一串节点)，剩下部分才需要通过new方式克隆移动到新链表中（采用头插法）。
                         int runBit = fh & n;
                         Node<K,V> lastRun = f;
                         for (Node<K,V> p = f.next; p != null; p = p.next) {
@@ -607,7 +612,7 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
                         for (Node<K,V> p = f; p != lastRun; p = p.next) {
                             int ph = p.hash; K pk = p.key; V pv = p.val;
                             if ((ph & n) == 0)
-                                ln = new Node<K,V>(ph, pk, pv, ln);
+                                ln = new Node<K,V>(ph, pk, pv, ln); //可以看到是逆序插入新节点的（头插）
                             else
                                 hn = new Node<K,V>(ph, pk, pv, hn);
                         }
@@ -670,11 +675,11 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
 根据运算得到当前遍历的数组的位置i，然后利用tabAt方法获得i位置的元素再进行判断：
 
 1. 如果这个位置为空，就在原table中的i位置放入forwardNode节点，这个也是触发并发扩容的关键点；
-2. 如果这个位置是Node节点（fh>=0），如果它是一个链表的头节点，就构造一个反序链表，把他们分别放在nextTable的i和i+n的位置上
+2. 如果这个位置是Node节点（fh>=0），如果它是一个链表的头节点，就把这个链表分裂成两个链表，把它们分别放在nextTable的i和i+n的位置上
 3. 如果这个位置是TreeBin节点（fh<0），也做一个反序处理，并且判断是否需要untreefi，把处理的结果分别放在nextTable的i和i+n的位置上
 4. 遍历过所有的节点以后就完成了复制工作，这时让nextTable作为新的table，并且更新sizeCtl为新容量的0.75倍 ，完成扩容。设置为新容量的0.75倍代码为 `sizeCtl = (n << 1) - (n >>> 1)`，仔细体会下是不是很巧妙，n<<1相当于n右移一位表示n的两倍即2n,n>>>1左右一位相当于n除以2即0.5n,然后两者相减为2n-0.5n=1.5n,是不是刚好等于新容量的0.75倍即2n*0.75=1.5n。最后用一个示意图来进行总结（图片摘自网络）：
 
-![ConcurrentHashMap扩容示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentHashMap-02.png)
+![ConcurrentHashMap扩容示意图](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentHashMap-02.png)
 
 
 
@@ -830,4 +835,10 @@ JDK6,7中的ConcurrentHashmap主要使用Segment来实现减小锁粒度，分�
 >- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 >- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

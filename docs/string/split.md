@@ -1,11 +1,16 @@
 ---
+title: 如何在Java中优雅地分割String字符串？
+shortTitle: Java字符串分割
 category:
   - Java核心
 tag:
-  - Java
+  - 数组&字符串
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，如何在Java中优雅地分割String字符串？
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java字符串,String,拆分字符串
 ---
-
-# 如何在Java中优雅地分割String字符串？
 
 “哥，我感觉字符串拆分没什么可讲的呀，直接上 String 类的 `split()` 方法不就可以了！”三妹毫不客气地说。
 
@@ -94,7 +99,7 @@ cmower.split("[.]");
 
 除此之外， 还可以使用 Pattern 类的 `quote()` 方法来包裹英文逗点“.”，该方法会返回一个使用 `\Q\E` 包裹的字符串。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/split-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/split-01.png)
 
 来看示例：
 
@@ -185,7 +190,7 @@ String [] parts = cmower.split("(?=，)");
 
 “它其实是正则表达式中的断言模式。”我说，“你有时间的话，可以看看前面我推荐的两份开源文档。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/split-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/split-02.png)
 
 “`split()` 方法可以传递 2 个参数，第一个为分隔符，第二个为拆分的字符串个数。”我说。
 
@@ -199,7 +204,7 @@ if (cmower.contains("，")) {
 
 进入 debug 模式的话，可以看到以下内容：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/split-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/string/split-03.png)
 
 也就是说，传递 2 个参数的时候，会直接调用 `substring()` 进行截取，第二个分隔符后的就不再拆分了。
 
@@ -215,4 +220,11 @@ if (cmower.contains("，")) {
 
 “嗯，我把今天的内容温习下，二哥，你休息会。”三妹说。
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+
+---
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

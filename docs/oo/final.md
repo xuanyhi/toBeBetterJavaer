@@ -1,11 +1,16 @@
 ---
+title: 一文彻底搞懂 Java final 关键字
+shortTitle: 一文彻底搞懂Java final关键字
+description: Java程序员进阶之路，小白的零基础Java教程，一文彻底搞懂 Java final 关键字
 category:
-  - Java核心
+  - Java 核心
 tag:
-  - Java
+  - 面向对象编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,final,静态变量,静态方法,静态代码块,静态内部类
 ---
-
-# 浅析Java中的final关键字
 
 
 “哥，今天学什么呢？”
@@ -16,7 +21,7 @@ tag:
 
 “好吧。”我摊摊手，表示很无辜，真的是所有的决定都交给我这个哥哥了，如果决定错了，锅得背上。
 
-### 01、final 变量
+## 01、final 变量
 
 “好了，我们先来看 final 修饰的变量吧！”
 
@@ -30,7 +35,7 @@ final int age = 18;
 
 “当尝试将 age 的值修改为 30 的时候，编译器就生气了。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-01.png)
 
 “再来看这段代码。”
 
@@ -58,7 +63,7 @@ final Pig pig = new Pig();
 
 “如果尝试将 pig 重新赋值的话，编译器同样会生气。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-02.png)
 
 “但我们仍然可以去修改 pig 对象的 name。”
 
@@ -70,7 +75,7 @@ System.out.println(pig.getName()); // 特立独行
 
 “另外，final 修饰的成员变量必须有一个默认值，否则编译器将会提醒没有初始化。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-03.png)
 
 “final 和 static 一起修饰的成员变量叫做常量，常量名必须全部大写。”
 
@@ -97,9 +102,9 @@ public class ArgFinalTest {
 
 “如果尝试去修改它的话，编译器会提示以下错误。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-04.png)
 
-### 02、final 方法
+## 02、final 方法
 
 “被 final 修饰的方法不能被重写。如果我们在设计一个类的时候，认为某些方法不应该被重写，就应该把它设计成 final 的。”
 
@@ -124,7 +129,7 @@ public class Actor {
 
 “当我们想要重写该方法的话，就会出现编译错误。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-05.png)
 
 
 “三妹，来问你一个问题吧。”正想趁三妹回答问题的时候喝口水。
@@ -139,7 +144,7 @@ public class Actor {
 
 “那必须啊，谁叫我是你妹呢。”
 
-### 03、final 类
+## 03、final 类
 
 “如果一个类使用了 final 关键字修饰，那么它就无法被继承.....”
 
@@ -165,7 +170,7 @@ public final class String
 
 “想了解更详细的原因，可以一会看看我之前写的这篇文章。”
 
-[为什么 Java 字符串是不可变的？](https://mp.weixin.qq.com/s/CRQrm5zGpqWxYL_ztk-b2Q)
+[为什么 Java 字符串是不可变的？](https://tobebetterjavaer.com/string/immutable.html)
 
 “任何尝试从 final 类继承的行为将会引发编译错误。来看这段代码。”
 
@@ -185,7 +190,7 @@ public final class Writer {
 
 “尝试去继承它，编译器会提示以下错误，Writer 类是 final 的，无法继承。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/23-06.png)
 
 “不过，类是 final 的，并不意味着该类的对象是不可变的。”
 
@@ -201,7 +206,7 @@ System.out.println(writer.getName()); // 沉默王二
 
 “关于不可变类，我之前也单独讲过一篇，你一会去看看。”
 
-[不可变类](https://mp.weixin.qq.com/s/wbdV9rV60AwWiiTEBYPP7g)
+[不可变类](https://tobebetterjavaer.com/basic-extra-meal/immutable.html)
 
 “把一个类设计成 final 的，有其安全方面的考虑，但不应该故意为之，因为把一个类定义成 final 的，意味着它没办法继承，假如这个类的一些方法存在一些问题的话，我们就无法通过重写的方式去修复它。”
 
@@ -218,4 +223,10 @@ System.out.println(writer.getName()); // 沉默王二
 
 我心里这样想着，天渐渐地暗了下来。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

@@ -1,11 +1,16 @@
 ---
+title: Java中的代码初始化块：对成员变量进行更复杂的赋值
+shortTitle: Java中的代码初始化块
+description: Java程序员进阶之路，小白的零基础Java教程，认真聊聊 Java中的代码初始化块：对成员变量进行更复杂的赋值
 category:
-  - Java核心
+  - Java 核心
 tag:
-  - Java
+  - 面向对象编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,Java代码初始化块,代码初始化块
 ---
-
-# Java代码初始化块
 
 
 “哥，今天我们要学习的内容是‘代码初始化块’，对吧？”看来三妹已经提前预习了我上次留给她的作业。
@@ -79,7 +84,7 @@ public class Car {
 
 说完这句话，我打开 draw.io，使上了吃奶的劲，画出了下面这幅图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/22-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/22-01.png)
 
 “哦，原来如此啊！”三妹仿佛发现了新大陆，意味深长地说。
 
@@ -124,4 +129,11 @@ public class B extends A{
 
 “这个例子再次印证了之前的第二条规则：代码初始化块是放在构造方法中执行的，只不过比较靠前。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

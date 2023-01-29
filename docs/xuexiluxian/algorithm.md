@@ -1,20 +1,16 @@
 ---
 star: true
-title: 数据结构与算法学习路线（建议收藏🔥）
+title: 2023年最值得收藏的数据结构与算法学习路线（🔥）
 shortTitle: 数据结构与算法学习路线
 category:
   - 学习路线
 tag:
-  - 算法
-  - 数据结构
+  - 学习路线
 description: 如何系统地学习数据结构与算法？为了让你对数据结构和算法能有个全面的认识，我画了一张图，里面几乎涵盖了所有数据结构和算法书籍中都会讲到的知识点。
 head:
   - - meta
-    - name: description
-      content: 如何系统地学习数据结构与算法？为了让你对数据结构和算法能有个全面的认识，我画了一张图，里面几乎涵盖了所有数据结构和算法书籍中都会讲到的知识点。
-  - - meta
     - name: keywords
-      content: 算法,数据结构
+      content: 算法,数据结构,学习路线
 ---
 
 说出来还真有点不好意思。上学那时候傻，为了校招，硬着头皮刷《算法导论》、《编程珠玑》，还有 LeetCode，刷了小一年。
@@ -23,11 +19,11 @@ head:
 
 等找到了工作后才恍然大悟，原来当初根本不用那么辛苦。这不，刚好有小伙伴在《[Java 程序员进阶之路](https://tobebetterjavaer.com/zhishixingqiu/)》知识星球上问我算法的学习路线，我就毫不保留地把我算法方面的学习经验分享出来，希望能给大家一点点启发和帮助。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-59f3bc36-4e6c-48c0-86e5-8afdd6165147.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-59f3bc36-4e6c-48c0-86e5-8afdd6165147.png)
 
 我画了一张图，里面几乎涵盖了所有数据结构与算法书籍中都会讲到的知识点。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-220e86a7-fa5d-44a2-a560-3cb6cfa70ad0.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-220e86a7-fa5d-44a2-a560-3cb6cfa70ad0.png)
 
 但讲良心话，对于一个初学者，或者不打算卷算法岗的程序员来说，完全就没必要把思维导图里面的所有知识点都学了，那样就太不高效了。
 
@@ -60,7 +56,7 @@ head:
 
 其实真正的原因是没有找到好的学习方法，没有抓住学习的重点。相信你认真看完我这条学习路线后，学起来就会有的放矢、事半功倍了。
 
-### 一、什么是数据结构
+## 一、什么是数据结构
 
 数据结构是一种具有一定逻辑关系，在计算机中应用某种存储结构，并且封装了相应操作的数据元素集合。它包含三方面的内容，逻辑关系、存储关系及操作。不同种类的数据结构适合于不同种类的应用，而部分甚至专门用于特定的作业任务。例如，计算机网络依赖于路由表运作，B 树高度适用于数据库的封装。
 
@@ -109,7 +105,7 @@ class 二哥 {
 
 经典的数据结构与算法都有哪些呢？比如说队列、栈、堆、二分查找、动态规划等等。
 
-### 二、什么是算法
+## 二、什么是算法
 
 算法就是操作数据的一组方法。数据结构是为算法服务的，而算法想要体现出自己的价值，就必须得有数据结构这个载体。
 
@@ -119,7 +115,7 @@ class 二哥 {
 
 当然了，数据结构和算法离不开一些数学方面的推理和证明，比如说我们在分析某个算法的时间复杂度和空间复杂度时。但这个不需要去担心，只要你能保持高中时期的数学水准，就完全可以学好数据结构与算法。
 
-### 三、为什么要学习数据结构和算法
+## 三、为什么要学习数据结构和算法
 
 你是不是觉得数据结构与算法，跟操作系统、计算机网络一样，都是脱离实际工作的知识，可能除了面试，这辈子都用不着？
 
@@ -157,59 +153,59 @@ class 二哥 {
 
 是时候提升自己的内功了，这样怼人也会更自信，跳槽也不用畏畏缩缩了。
 
-### 四、硬核算法和数据结构学习资料
+## 四、硬核算法和数据结构学习资料
 
-**1）视频**
+### **1）视频**
 
 B 站上浙江大学的一个数据结构课非常不错，很系统很经典。每次看这些大学老师的讲课就越觉得考好大学很重要，很多学校的老师，在讲数据结构和算法的时候，自己都不知道自己在讲什么。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-e2812c94-5945-41ad-adcd-4dbb02fae8d5.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-e2812c94-5945-41ad-adcd-4dbb02fae8d5.png)
 
 不得不说，陈越姥姥等人对数据结构和算法这个领域的知识理解是真的透彻，我在听这个课的时候感觉整个人都通透了。
 
-视频地址：[https://www.bilibili.com/video/BV1JW411i731](https://www.bilibili.com/video/BV1JW411i731)
+视频地址：[https://www.bilibili.com/video/BV1Kb41127fT](https://www.bilibili.com/video/BV1Kb41127fT)
 
 这里还有个同学在 GitHub 上整理这门课程的所有课件和作业，学习 Java 的小伙伴可以尝试用 Java 完成下作业。
 
 >GitHub 地址：[https://github.com/CYBruce/DataStructure_Algorithm_ZJU](https://github.com/CYBruce/DataStructure_Algorithm_ZJU)
 
 
-**2）书籍**
+### **2）书籍**
 
 入门阶段推荐陈小玉老师的《[趣学数据结构](https://book.douban.com/book/subject/34785269/)》和《[趣学算法](https://book.douban.com/subject/27109832/)》。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-2ac7da9b-e812-49d9-8012-5e2f792f87bf.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-2ac7da9b-e812-49d9-8012-5e2f792f87bf.png)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-18b8f9d6-cbfa-482f-80a0-57081e3616d8.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-18b8f9d6-cbfa-482f-80a0-57081e3616d8.png)
 
 
 
 算法领域的经典参考书《[算法 4](https://book.douban.com/subject/19952400/)》也非常值得推荐，里面的代码是用 Java 实现的，所以 Java 开发者可以直接选用这本书。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-766885af-dfac-452f-b110-c9ca89a0bb9a.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-766885af-dfac-452f-b110-c9ca89a0bb9a.png)
 
 学霸型人才可以直接刷《[算法导论](https://book.douban.com/subject/20432061/)》，严谨全面，可以直接拿来作为研究生阶段的算法课程教材。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-fc895095-927c-42a4-a934-f98371a6f376.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-fc895095-927c-42a4-a934-f98371a6f376.png)
 
 
-**3）开源电子书**
+### **3）开源电子书**
 
 算法方面的开源电子书是真的非常多，这里推荐下《labuladong 的算法小抄》，仓库里面有句话我非常认同——“刷题刷题，刷的是题，培养的是思维”，这个仓库的优势就在于，它的解题思路很完备，我相信可以帮助到不少读者，至少在刷题的时候少走很多弯路。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-d573f369-7dff-47a3-9929-46044e419aa8.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-d573f369-7dff-47a3-9929-46044e419aa8.png)
 
 >GitHub 地址：[https://github.com/labuladong/fucking-algorithm](https://github.com/labuladong/fucking-algorithm)
 
 当然了，考虑到有些小伙伴需要 PDF 版的，我也准备好了。直接长按识别/扫描下方二维码，关注后回复 「**刷题**」 下载这份 PDF 吧：
 
-![扫码关注后回复「刷题」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
+![扫码关注后回复「刷题」关键字](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 
 除此之外，再给大家推荐三份高质量的刷题笔记，C/C++、Java、Go 版的全有了！同样可以通过上面的方式获取。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-6c0c84be-ba1c-48d0-8ea7-70ef66e04ff2.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-6c0c84be-ba1c-48d0-8ea7-70ef66e04ff2.png)
 
-**4）在线网站**
+### **4）在线网站**
 
 >LeetCode题库：[https://leetcode-cn.com/problemset/all/](https://leetcode-cn.com/problemset/all/)
 
@@ -217,22 +213,22 @@ B 站上浙江大学的一个数据结构课非常不错，很系统很经典。
 
 这里我给大家整理了 100 道面试高频算法题，大多数的小伙伴们按照这个路线去刷就足够应付面试了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-c4d31ba3-6d81-4617-a68b-81d935b2a106.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-c4d31ba3-6d81-4617-a68b-81d935b2a106.png)
 
 >VisuAlgo：[https://visualgo.net/zh](https://visualgo.net/zh)
 
 算法的难点在于，没办法在脑例子抽象出它的步骤，那 VisuAlgo 就是一个非常值得推荐的可视化算法网站。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-b0d17b5d-d13a-46aa-a8b0-6b16772a30a6.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-b0d17b5d-d13a-46aa-a8b0-6b16772a30a6.png)
 
 
-**5）付费专栏**
+### **5）付费专栏**
 
 小争哥在极客时间上开了一门《数据结构与算法之美》的付费专栏，风评非常不错，喜欢的小伙伴可以[戳链](http://gk.link/a/11ijz)接去购买。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-705c33b5-b90e-49c7-a3bc-a1f3c4630a66.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/algorithm-705c33b5-b90e-49c7-a3bc-a1f3c4630a66.png)
 
-### 五、一点小心得
+## 五、一点小心得
 
 最后来分享一些让你事半功倍的学习技巧。
 
@@ -270,5 +266,11 @@ B 站上浙江大学的一个数据结构课非常不错，很系统很经典。
 
 祝顺利！
 
+---------
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

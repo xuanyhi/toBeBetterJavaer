@@ -1,11 +1,16 @@
 ---
+title: 为什么重写equals方法的时候必须要重写hashCode方法？
+shortTitle: 为什么重写equals的时候必须重写hashCode
 category:
   - Java核心
 tag:
-  - Java
+  - Java重要知识点
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，为什么重写equals方法的时候必须要重写hashCode方法
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java,hashcode,equals
 ---
-
-# 一次性搞清楚equals和hashCode
 
 “二哥，我在读《Effective Java》 的时候，第 11 条规约说重写 equals 的时候必须要重写 hashCode 方法，这是为什么呀？”三妹单刀直入地问。
 
@@ -172,7 +177,7 @@ null
 
 “原因就在于重写 equals 方法的时候没有重写 hashCode 方法。”我回答道，“equals 方法虽然认定名字和年纪相同就是同一个学生，但它们本质上是两个对象，hashCode 并不相同。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/equals-hashcode-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/equals-hashcode-01.png)
 
 “那怎么重写 hashCode 方法呢？”三妹问。
 
@@ -223,11 +228,18 @@ result = (31*1 + Integer(18).hashCode()) * 31 + String("张三").hashCode();
 
 因为此时 s1 和 s2 对象的哈希值都为 776408。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/equals-hashcode-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/equals-hashcode-02.png)
 
 
 “每当重写 equals 方法时，hashCode 方法也需要重写，原因就是为了保证：如果两个对象调用 equals 方法返回的结果为 true，那么两个对象调用 hashCode 方法返回的结果也必然相同。”我点题了。
 
 “OK，get 了。”三妹开心地点了点头，看得出来，今天学到了不少。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

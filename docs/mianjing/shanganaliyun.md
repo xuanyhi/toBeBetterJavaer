@@ -4,19 +4,9 @@ shortTitle: 硕士读者春招上岸阿里云
 category:
   - 求职面试
 tag:
-  - 面试经验
-  - 面经
-  - 求职
-  - offer
-  - 春招
-  - 秋招
-  - 社招
-  - 校招
+  - 优质面经
 description: 春招斩获深圳腾讯 PCG 和杭州阿里云
 head:
-  - - meta
-    - name: description
-      content: 春招斩获深圳腾讯 PCG 和杭州阿里云
   - - meta
     - name: keywords
       content: 面试经验,面经,求职,offer,春招,秋招,社招,校招
@@ -35,7 +25,7 @@ head:
 -----
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/shanganaliyun-1.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/shanganaliyun-1.png)
 
 我的昵称是风，来自浙江舟山，南航读研，武大本科，专业是计算机。
 
@@ -86,7 +76,7 @@ head:
 进入研究生阶段后，在实验室，学生俱乐部，各种活动比赛，公司的宣讲会等，都能学到很多东西，认识很多朋友。我认为有志同道合的朋友一起学习，互相查漏补缺，帮忙解决问题，相对我之前的自学，效率上要提高不少。
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/shanganaliyun-2.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/shanganaliyun-2.png)
 
 在了解到项目在面试中占据比较重要的位置，我会在学习完理论知识后，尽量用代码实践。在自己学习项目视频教程，并跟着手打过后，我参与到学校老师手下的一个上线项目，真正用技术解决实际问题。
 
@@ -144,4 +134,12 @@ head:
 
 >转载链接：[https://mp.weixin.qq.com/s/EB_NCC2fNyYHuz04k1H4Nw](https://mp.weixin.qq.com/s/EB_NCC2fNyYHuz04k1H4Nw)，出处：JavaGuide，整理：沉默王二
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
+---------
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

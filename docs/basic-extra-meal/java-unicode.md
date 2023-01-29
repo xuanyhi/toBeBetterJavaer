@@ -1,18 +1,23 @@
 ---
+title: 彻底弄懂Java中的Unicode和UTF-8编码
+shortTitle: 彻底弄懂Unicode和UTF-8编码
 category:
   - Java核心
 tag:
-  - Java
+  - Java重要知识点
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，彻底弄懂Java中的Unicode和UTF-8编码
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,unicode,utf-8
 ---
 
-# 彻底弄懂Java中的Unicode和UTF-8编码
-
-“二哥，[上一篇](https://mp.weixin.qq.com/s/twim3w_dp5ctCigjLGIbFw)文章中提到了 Unicode，说 Java 中的 
+“二哥，[上一篇](https://tobebetterjavaer.com/basic-grammar/basic-data-type.html)文章中提到了 Unicode，说 Java 中的 
  char 类型之所以占 2 个字节，是因为 Java 使用的是 Unicode 字符集而不是 ASCII 字符集，我有点迷，想了解一下，能细致给我说说吗？”
 
 “当然没问题啊，三妹。”
 
-**1）ASCII**
+## **1）ASCII**
 
 对于计算机来说，只认 0 和 1，所有的信息最终都是一个二进制数。一个二进制数要么是 0，要么是 1，所以 8 个二进制数放在一起（一个字节），就会组合出 256 种状态，也就是 2 的 8 次方（`2^8`），从 00000000 到 11111111。
 
@@ -20,7 +25,7 @@ ASCII 码由电报码发展而来，第一版标准发布于 1963 年，最后�
 
 ASCII 码的局限在于只能显示 26 个基本拉丁字母、阿拉伯数字和英式标点符号，因此只能用于显示现代美国英语，对于其他一些语言则无能无力，比如在法语中，字母上方有注音符号，它就无法用 ASCII 码表示。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-01.png)
 
 PS：拉丁字母（也称为罗马字母）是多数欧洲语言采用的字母系统，是世界上最通行的字母文字系统，是罗马文明的成果之一。
 
@@ -28,15 +33,15 @@ PS：拉丁字母（也称为罗马字母）是多数欧洲语言采用的字母
 
 在我们的印象中，可能说拉丁字母多少有些陌生，说英语字母可能就有直观的印象了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-02.png)
 
 PPS：阿拉伯数字，我们都很熟悉了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-03.png)
 
 但是，阿拉伯数字并非起源于阿拉伯，而是起源于古印度。学过历史的我们应该有一些印象，阿拉伯分布于西亚和北非，以阿拉伯语为主要语言，以伊斯兰教为主要信仰。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-04.png)
 
 处在这样的地理位置，做起东亚和欧洲的一些生意就很有优势，于是阿拉伯数字就由阿拉伯人传到了欧洲，因此得名。
 
@@ -46,10 +51,10 @@ PPPS：英式标点符号，也叫英文标点符号，和中文标点符号很�
 
 在很多人的印象中，古文是没有标点符号的，但管锡华博士研究指出，中国早在先秦时代就有标点符号了，后来融合了一些英文标点符号后，逐渐形成了现在的中文标点符号。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-05.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-05.png)
 
 
-**2）Unicode**
+## **2）Unicode**
 
 这个世界上，除了英语，还有法语、葡萄牙语、西班牙语、德语、俄语、阿拉伯语、韩语、日语等等等等。ASCII 码用来表示英语是绰绰有余的，但其他这些语言就没办法了。
 
@@ -61,7 +66,7 @@ PS：常用字大概 2500 个，次常用字 1000 个。
 
 要知道，世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-06.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-06.png)
 
 PPS：这“锟斤拷”价格挺公道的啊！！！（逃
 
@@ -71,7 +76,7 @@ PPS：这“锟斤拷”价格挺公道的啊！！！（逃
 
 Unicode 至今仍在不断增修，每个新版本都会加入更多新的字符。目前最新的版本为 2020 年 3 月公布的 13.0，收录了 13 万个字符。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-07.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-07.png)
 
 Unicode 是一个很大的集合，现在的规模可以容纳 100 多万个符号。每个符号的编码都不一样，比如，`U+0639`表示阿拉伯字母 `Ain`，`U+0041` 表示英语的大写字母 `A`，`U+4E25` 表示汉字`严`。
 
@@ -152,7 +157,7 @@ UTF-16 使用 2 个或者 4 个字节来存储字符。
 
 - 对于 Unicode 编号范围在 10000 ~ 10FFFF 之间的字符，UTF-16 使用四个字节存储，具体来说就是：将字符编号的所有比特位分成两部分，较高的一些比特位用一个值介于 D800~DBFF 之间的双字节存储，较低的一些比特位（剩下的比特位）用一个值介于 DC00~DFFF 之间的双字节存储。
 
-**3）char**
+## **3）char**
 
 搞清楚了 Unicode 之后，再回头来看 char 为什么是两个字节的问题，就很容易搞明白了。
 
@@ -164,7 +169,7 @@ UTF-16 使用 2 个或者 4 个字节来存储字符。
 
 这个 `𐐷` 字符很特殊，Unicode 编码是 `U+10437`，它就无法使用一个 char 来表示，当你尝试用 char 来表示时，它会被 IDEA 转成 UTF-16 十六进制字符代码 `\uD801\uDC37`（与此同时，编译器会提醒你最好把它声明成 String 类型）。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-08.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/ten-08.png)
 
 也就是说，在 Java 中，char 会占用两个字节，超出 char 的承受范围（'\u0000'（0）和 '\uffff'（65,535））的字符，都将无法表示。
 
@@ -172,4 +177,10 @@ UTF-16 使用 2 个或者 4 个字节来存储字符。
 
 “好了，三妹，关于 Unicode 就先说这么多吧，你是不是已经清楚了？”转动了一下僵硬的脖子后，我对三妹说。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

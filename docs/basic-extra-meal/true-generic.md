@@ -1,11 +1,17 @@
 ---
+title: Java不能实现真正泛型的原因是什么？
+shortTitle: Java不能实现真正泛型的原因是什么？
 category:
   - Java核心
 tag:
-  - Java
+  - Java重要知识点
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，Java不能实现真正泛型的原因是什么？
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java,泛型
 ---
 
-# Java不能实现真正泛型的原因是什么？
 
 “二哥，为啥 Java 不能实现真正泛型啊？”三妹开门见山地问。
 
@@ -64,7 +70,7 @@ Java 在 2004 年已经积累了较为丰富的生态，如果把现有的类修
 
 第二，不是“实现不了”。Pizza，1996 年的实验语言，在 Java 的基础上扩展了泛型。
 
->Pizza 教程地址：http://pizzacompiler.sourceforge.net/doc/tutorial.html
+>Pizza 教程地址：[http://pizzacompiler.sourceforge.net/doc/tutorial.html](http://pizzacompiler.sourceforge.net/doc/tutorial.html)
 
 “1996 年？”三妹表示很吃惊。
 
@@ -114,7 +120,7 @@ String s = a.get();
 
 对吧？这就是我们想要的“真正意义上的泛型”，A 不仅仅可以是引用类型 String，还可以是基本数据类型。要知道，Java 的泛型不允许是基本数据类型，只能是包装器类型。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-01.png)
 
 除此之外，Pizza 的泛型还可以直接使用 `new` 关键字进行声明，并且 Pizza 编译器会从构造方法的参数上推断出具体的对象类型，究竟是 String 还是 int。要知道，Java 的泛型因为类型擦除的原因，程序员是无法知道一个 ArrayList 究竟是 `ArrayList<String>` 还是 `ArrayList<Integer>` 的。
 
@@ -185,7 +191,7 @@ Java 一直以来都强调兼容性，我认为这也是 Java 之所以能被广
 
 但 Java 并不支持高版本 JDK 编译生成的字节码文件在低版本的 JRE（Java 运行时环境）上跑。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-02.png)
 
 
 针对泛型，兼容性具体表现在什么地方呢？来看下面这段代码。
@@ -214,12 +220,12 @@ Java 神奇就神奇在这，表面上万物皆对象，但为了性能上的考
 
 一个好消息是 Valhalla 项目正在努力解决这些因为泛型擦除带来的历史遗留问题。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-03.png)
 
 
 Project Valhalla：正在进行当中的 OpenJDK 项目，计划给未来的 Java 添加改进的泛型支持。
 
->源码地址：http://openjdk.java.net/projects/valhalla/
+>源码地址：[http://openjdk.java.net/projects/valhalla/](http://openjdk.java.net/projects/valhalla/)
 
 让我们拭目以待吧！
 
@@ -227,4 +233,10 @@ Project Valhalla：正在进行当中的 OpenJDK 项目，计划给未来的 Jav
 
 “嗯嗯。二哥，你讲得可真棒👍”三妹夸奖得我有点小开心，嘿嘿。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+---
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

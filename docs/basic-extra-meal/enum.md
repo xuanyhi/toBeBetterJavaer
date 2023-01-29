@@ -1,11 +1,16 @@
 ---
+title: 新来个技术总监，彻底把 Java 枚举(enum)讲清楚了
+shortTitle: Java枚举（enum）
 category:
   - Java核心
 tag:
-  - Java
+  - Java重要知识点
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，新来个技术总监，彻底把 Java 枚举(enum)讲清楚了
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java,枚举,enum
 ---
-
-# Java枚举（enum）
 
 “今天我们来学习枚举吧，三妹！”我说，“同学让你去她家玩了两天，感觉怎么样呀？”
 
@@ -116,7 +121,7 @@ if(player.getType().equals(Player.PlayerType.BASKETBALL)){};
 
 另外， “==”运算符会在编译时进行检查，如果两侧的类型不匹配，会提示错误，而 `equals()` 方法则不会。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-01.png)
 
 “枚举还可用于 switch 语句，和基本数据类型的用法一致。”我说。
 
@@ -166,7 +171,7 @@ public enum PlayerType {
 “因为 EnumSet 是一个抽象类，所以创建 EnumSet 时不能使用 new 关键字。不过，EnumSet 提供了很多有用的静态工厂方法。”
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-02.png)
 
 “来看下面这个例子，我们使用 `noneOf()` 静态工厂方法创建了一个空的 PlayerType 类型的 EnumSet；使用 `allOf()` 静态工厂方法创建了一个包含所有 PlayerType 类型的 EnumSet。”
 
@@ -197,7 +202,7 @@ public class EnumSetTest {
 
 有了 EnumSet 后，就可以使用 Set 的一些方法了，见下图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-03.png)
 
 “除了 EnumSet，还有 EnumMap，是一个专门针对枚举类型的 Map 接口的实现类，它可以将枚举常量作为键来使用。EnumMap 的效率比 HashMap 还要高，可以直接通过数组下标（枚举的 ordinal 值）访问到元素。”
 
@@ -209,7 +214,7 @@ EnumMap<PlayerType, String> enumMap = new EnumMap<>(PlayerType.class);
 
 有了 EnumMap 对象后就可以使用 Map 的一些方法了，见下图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-04.png)
 
 和 HashMap（后面会讲）的使用方法大致相同，来看下面的例子。
 
@@ -289,4 +294,10 @@ public enum EasySingleton{
 
 “嗯嗯。”讲了这么多，必须跑去抽烟机那里安排一根华子了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

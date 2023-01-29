@@ -1,16 +1,19 @@
 ---
+title: 分享 4 个阅读源码必备的 IDEA 调试技巧
+shortTitle: 4个阅读源码必备的IDEA调试技巧
 category:
-  - Java企业级开发
+  - 开发/构建工具
 tag:
-  - Intellij IDEA
+  - IDEA
+description: 几个我日常工作以及阅读源码必备的 IntelliJ IDEA 高级调试技巧，分分钟要起飞的节奏。
+head:
+  - - meta
+    - name: keywords
+      content: Intellij IDEA,IDEA,Intellij IDEA 调试技巧,IDEA 调试技巧
 ---
 
-# 4个高级的IntelliJ IDEA调试技巧
 
-
-大家好，我是二哥！
-
-今天给大家带来几个我日常工作以及阅读源码必备的 IntelliJ IDEA 高级调试技巧，分分钟要起飞的节奏。
+大家好，我是二哥！今天给大家带来几个我日常工作以及阅读源码必备的 IntelliJ IDEA 高级调试技巧，分分钟要起飞的节奏。
 
 ## 断点处添加 log
 
@@ -37,7 +40,7 @@ public static void main(String[] args) {
 
 假如我们想在第 15 行查看每次调用，随即出来的 i 的值到底是多少，我们没必要在这个地方添加任何 log，在正常加断点的地方使用快捷键 `Shift + 鼠标左键`，就会弹出下面的内容
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-e69c965f-f7e5-4e91-a92d-a43a1d0aced4.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-e69c965f-f7e5-4e91-a92d-a43a1d0aced4.jpg)
 
 勾选上 `Evaluate and log`, 并自定义你想查看的 log/变量，比如这里的 `"interested" + i`, 这样以 Debug 模式运行程序（正常模式运行，不会打印这些 log）：
 
@@ -83,7 +86,7 @@ Process finished with exit code
 2.  在「眼睛」图标上鼠标右键
 3.  在弹框中勾选上`Field access` 和`Field modification` 两个选项
 
-![image.gif](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-72c23537-3f66-4283-b939-a265b7628a1a.gif)
+![image.gif](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-72c23537-3f66-4283-b939-a265b7628a1a.gif)
 
 如果修改字段值的方法比较多，也可以在 `Condition` 的地方定义断点进入条件, 有了这个功能的加成，相信你阅读源码会顺畅许多
 
@@ -95,19 +98,19 @@ Process finished with exit code
 
 这时我们就用到了 `Exception Breakpoints`, 当抛出异常时，在 catch 的地方打上断点，可以通过下图的几个位置获取栈顶异常类型，比如这里的 `NumberFormatException`
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-c4c511af-b00d-458b-a4a1-97d1fe1e84b8.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-c4c511af-b00d-458b-a4a1-97d1fe1e84b8.jpg)
 
 知道异常类型后，就可以按照如下步骤添加异常断点了：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-4c35cab7-83d2-45b4-8a27-ebeceb41ce08.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-4c35cab7-83d2-45b4-8a27-ebeceb41ce08.jpg)
 
 然后在弹框中选择 NumberFormatException
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-a98e7885-1e84-4c38-8de1-ae04d3013176.gif)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-a98e7885-1e84-4c38-8de1-ae04d3013176.gif)
 
 重新以 Debug 模式运行程序：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-498ad99d-a15d-4a4e-a01b-b0c11cf8f72e.gif)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-498ad99d-a15d-4a4e-a01b-b0c11cf8f72e.gif)
 
 程序「一路绿灯式」定位到抛出异常的位置，同时指出当时的变量信息，三个字：稳，准，狠，还有谁？
 
@@ -120,11 +123,11 @@ Process finished with exit code
 
 勾选上绿色框线上的内容，同样可以自定义跳转条件 Condition
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-b81dc459-5a9c-4e0e-b24e-350943299eda.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-b81dc459-5a9c-4e0e-b24e-350943299eda.jpg)
 
 当以 Debug 模式运行程序的时候，会自动进入实现类的方法（注意断点形状）：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-edbc1de2-4dd6-49a3-9a6a-5948d19aabee.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-edbc1de2-4dd6-49a3-9a6a-5948d19aabee.jpg)
 
 看到这你应该想到常见的 Runnable 接口中的 run 方法了，同样是有作用的，大家可以自行去尝试了
 
@@ -132,11 +135,17 @@ Process finished with exit code
 
 相信有以上四种调试技巧的加成，无论是工作debug 还是私下阅读源码，都可以轻松驾驭了。最后，来看看 IDEA 支持的各种断点调试类型，如果你只知道红色小圆点，那咱在留言区好好说说吧
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-92ad72da-4bf1-4bc4-b21d-78c33114dc96.jpg)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/ide/4-debug-skill-92ad72da-4bf1-4bc4-b21d-78c33114dc96.jpg)
 
 -----
 
 >作者：tan日拱一兵，转载链接：[https://mp.weixin.qq.com/s/KG0yzb_9XhhTSzjHr4DkIQ](https://mp.weixin.qq.com/s/KG0yzb_9XhhTSzjHr4DkIQ)
 
+----
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
+

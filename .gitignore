@@ -3,9 +3,10 @@ node_modules
 .temp
 package-lock.json
 yarn.lock
-package.json
 .DS_Store
 dump.rdb
 docs/.vuepress/.cache/
 docs/.vuepress/.temp/
-docs/.vuepress/dist/
+images
+*.log
+package.json

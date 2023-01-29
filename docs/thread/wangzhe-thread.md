@@ -3,20 +3,13 @@ title: 室友打了一把王者就学会了创建Java线程的3种方式
 shortTitle: 创建Java线程的3种方式
 category:
   - Java核心
-  - 并发编程
 tag:
-  - Java
   - Java并发编程
-  - Java多线程
-  - Java Thread
 description: 室友打了一把王者就学会了创建Java线程的3种方式
 head:
   - - meta
-    - name: description
-      content: 室友打了一把王者就学会了创建Java线程的3种方式
-  - - meta
     - name: keywords
-      content: Java,Java并发编程,Java多线程,Java Thread
+      content: Java,并发编程,多线程,Thread
 ---
 
 
@@ -87,7 +80,7 @@ t3.start();
 来看一下执行后的结果：
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-01.png)
 
 
 ♠②：创建一个类实现Runnable接口，并重写run方法。
@@ -125,7 +118,34 @@ t3.start();
 
 来看一下执行后的结果：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-02.png)
+
+♠③：实现Callable接口，重写call()方法，这种方式可以通过FutureTask获取任务执行的返回值。
+
+
+```java
+public class CallerTask implements Callable<String> {
+    public String call() throws Exception {
+        return "Hello,i am running!";
+    }
+
+    public static void main(String[] args) {
+        //创建异步任务
+        FutureTask<String> task=new FutureTask<String>(new CallerTask());
+        //启动线程
+        new Thread(task).start();
+        try {
+            //等待执行完成，并获取返回结果
+            String result=task.get();
+            System.out.println(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
  
 **❤1、为什么要重写run方法？**
@@ -181,7 +201,7 @@ t3.start();
 
 来看一下执行后的结果：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-03.png)
 
 
 3）`setDaemon()`：将此线程标记为守护线程，准确来说，就是服务其他的线程，像 Java 中的垃圾回收线程，就是典型的守护线程。
@@ -207,6 +227,12 @@ t3.start();
 
 最后再来看一下线程的生命周期吧，一图胜千言。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-04.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/wangzhe-thread-04.png)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

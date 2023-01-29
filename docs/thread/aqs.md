@@ -1,9 +1,15 @@
 ---
+title: Java并发AQS详解
+shortTitle: Java并发AQS详解
+description: Java并发AQS详解
 category:
   - Java核心
-  - 并发编程
 tag:
-  - Java
+  - Java并发编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,并发编程,多线程,Thread,cas
 ---
 
 # Java并发AQS详解
@@ -34,7 +40,7 @@ compareAndSetState()
 
 而AQS类本身实现的是一些排队和阻塞的机制，比如具体线程等待队列的维护（如获取资源失败入队/唤醒出队等）。它内部使用了一个先进先出（FIFO）的双端队列，并使用了两个指针head和tail用于标识队列的头部和尾部。其数据结构如图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/aqs-c294b5e3-69ef-49bb-ac56-f825894746ab.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/aqs-c294b5e3-69ef-49bb-ac56-f825894746ab.png)
 
 但它并不是直接储存线程，而是储存拥有线程的Node节点。
 
@@ -225,7 +231,7 @@ final boolean acquireQueued(final Node node, int arg) {
 
 总结起来的一个流程图：
 
-![acquire流程](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/aqs-a0689bb2-9b18-419d-9617-6d292fbd439d.jpg)
+![acquire流程](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/aqs-a0689bb2-9b18-419d-9617-6d292fbd439d.jpg)
 
 ## 释放资源
 
@@ -250,10 +256,10 @@ private void unparkSuccessor(Node node) {
     // 得到头结点的后继结点head.next
     Node s = node.next;
     // 如果这个后继结点为空或者状态大于0
-    // 通过前面的定义我们知道，大于0只有一种可能，就是这个结点已被取消
+    // 通过前面的定义我们知道，大于0只有一种可能，就是这个结点已被取消（只有 Node.CANCELLED(=1) 这一种状态大于0）
     if (s == null || s.waitStatus > 0) {
         s = null;
-        // 等待队列中所有还有用的结点，都向前移动
+        // 从尾部开始倒着寻找第一个还未取消的节点（真正的后继者）
         for (Node t = tail; t != null && t != node; t = t.prev)
             if (t.waitStatus <= 0)
                 s = t;
@@ -271,4 +277,10 @@ private void unparkSuccessor(Node node) {
 >- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 >- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

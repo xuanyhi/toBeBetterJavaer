@@ -1,10 +1,15 @@
 ---
 title: 吊打Java并发面试官之BlockingQueue
+shortTitle: BlockingQueue
+description: 吊打Java并发面试官之BlockingQueue
 category:
   - Java核心
-  - 并发编程
 tag:
-  - Java
+  - Java并发编程
+head:
+  - - meta
+    - name: keywords
+      content: Java,并发编程,多线程,Thread,BlockingQueue
 ---
 
 
@@ -16,7 +21,7 @@ tag:
 
 BlockingQueue基本操作总结如下（此图来源于JAVA API文档）：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-01.png)
 
 BlockingQueue继承于Queue接口，因此，对数据元素的基本操作有：
 
@@ -370,7 +375,7 @@ tryTransfer方法如果当前有消费者线程（调用take方法或者具有�
 
 LinkedBlockingDeque是基于链表数据结构的有界阻塞双端队列，如果在创建对象时为指定大小时，其默认大小为Integer.MAX_VALUE。与LinkedBlockingQueue相比，主要的不同点在于，LinkedBlockingDeque具有双端队列的特性。LinkedBlockingDeque基本操作如下图所示（来源于java文档）
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-02.png)
 
 
 
@@ -384,7 +389,7 @@ LinkedBlockingDeque是基于链表数据结构的有界阻塞双端队列，如�
 另外，LinkedBlockingDeque实现了BlockingDueue接口而LinkedBlockingQueue实现的是BlockingQueue，这两个接口的主要区别如下图所示（来源于java文档）：
 
 
-![BlockingQueue和BlockingDeque的区别](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-03.png)
+![BlockingQueue和BlockingDeque的区别](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-03.png)
 
 从上图可以看出，两个接口的功能是可以等价使用的，比如BlockingQueue的add方法和BlockingDeque的addLast方法的功能是一样的。
 
@@ -399,4 +404,10 @@ DelayQueue是一个存放实现Delayed接口的数据的无界阻塞队列，只
 >- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 >- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)

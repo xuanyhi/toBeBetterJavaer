@@ -1,11 +1,16 @@
 ---
+title: 一文彻底讲明白的Java中的浅拷贝与深拷贝
+shortTitle: Java中的浅拷贝与深拷贝
 category:
   - Java核心
 tag:
-  - Java
+  - Java重要知识点
+description: Java程序员进阶之路，小白的零基础Java教程，从入门到进阶，一文彻底讲明白的Java中的浅拷贝与深拷贝
+head:
+  - - meta
+    - name: keywords
+      content: Java,Java SE,Java基础,Java教程,Java程序员进阶之路,Java入门,教程,java,深拷贝,浅拷贝
 ---
-
-# 彻底讲明白的Java浅拷贝与深拷贝
 
 “哥，听说浅拷贝和深拷贝是 Java 面试中经常会被问到的一个问题，是这样吗？”
 
@@ -103,7 +108,7 @@ writer2：Writer@b97c004{age=18, name='三妹'}
 
 可以看得出，浅拷贝后，writer1 和 writer2 引用了不同的对象，但值是相同的，说明拷贝成功。之后，修改了 writer2 的 name 字段，直接上图就明白了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/deep-copy-01.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/deep-copy-01.png)
 
  之前的例子中，Writer 类只有两个字段，没有引用类型字段。那么，我们再来看另外一个例子，为 Writer 类增加一个自定义的引用类型字段 Book，先来看 Book 的定义。
 
@@ -202,7 +207,7 @@ writer2：Writer@36d4b5c age=18, name='二哥', book=Book@32e6e9c3 bookName='永
 
 与之前例子不同的是，writer2.book 变更后，writer1.book 也发生了改变。这是因为字符串 String 是不可变对象，一个新的值必须在字符串常量池中开辟一段新的内存空间，而自定义对象的内存地址并没有发生改变，只是对应的字段值发生了改变，见下图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/deep-copy-02.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/deep-copy-02.png)
 
 “哇，哥，果真一图胜千言，我明白了。”三妹似乎对我画的图很感兴趣呢，“那你继续说深拷贝吧！”
 
@@ -303,7 +308,7 @@ writer2：Writer@6d00a15d age=18, name='二哥', book=Book@51efea79 bookName='�
 
 不只是 writer1 和 writer2 是不同的对象，它们中的 book 也是不同的对象。所以，改变了 writer2 中的 book 并不会影响到 writer1。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/deep-copy-03.png)
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/deep-copy-03.png)
 
 不过，通过 `clone()` 方法实现的深拷贝比较笨重，因为要将所有的引用类型都重写 `clone()` 方法，当嵌套的对象比较多的时候，就废了！
 
@@ -415,4 +420,11 @@ writer2：Writer@544fe44c age=18, name='二哥', book=Book@31610302 bookName='�
 
 “嗯嗯。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
+----
+
+最近整理了一份牛逼的学习资料，包括但不限于Java基础部分（JVM、Java集合框架、多线程），还囊括了 **数据库、计算机网络、算法与数据结构、设计模式、框架类Spring、Netty、微服务（Dubbo，消息队列） 网关** 等等等等……详情戳：[可以说是2022年全网最全的学习和找工作的PDF资源了](https://tobebetterjavaer.com/pdf/programmer-111.html)
+
+微信搜 **沉默王二** 或扫描下方二维码关注二哥的原创公众号沉默王二，回复 **111** 即可免费领取。
+
+![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
